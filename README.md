@@ -15,7 +15,7 @@ Hybrid modular architecture with Director agent orchestrating specialized agents
 
 ## Technology Stack
 
-- Python 3.11+ with FastAPI
+- Python 3.14 with FastAPI
 - Celery + Redis for task queuing
 - PostgreSQL for data storage
 - MinIO for asset storage
@@ -39,3 +39,43 @@ docker-compose up -d
 # Run tests
 pytest
 ```
+
+## API Endpoints
+
+- POST `/api/v1/manga/process` - Start processing a manga page
+- GET `/api/v1/manga/status/{job_id}` - Get job status
+- GET `/api/v1/manga/result/{job_id}` - Get job result (when completed)
+- GET `/api/v1/jobs/` - List recent jobs
+- GET `/api/v1/assets/{asset_id}` - Get specific asset
+
+## Features
+
+- [x] Project structure and basic API
+- [x] Database models for characters, environments, scenes, assets, jobs
+- [x] Director agent for workflow orchestration
+- [x] Screenwriter agent for screenplay generation
+- [x] Character manager for consistency
+- [x] Environment manager for location handling
+- [x] Prompt builder for AI generation prompts
+- [x] Image generation agent (simulated)
+- [x] Video generation agent (simulated)
+- [x] Voice generation agent (simulated)
+- [x] Music generation agent (simulated)
+- [x] FX generation agent (simulated)
+- [x] Editor agent for final assembly (simulated)
+- [x] API endpoints for job management
+- [ ] Frontend interface (optional)
+- [ ] Real AI model integrations (future work)
+- [ ] Advanced editing features (color grading, transitions, etc.)
+- [ ] User authentication and authorization
+- [ ] WebSocket for real-time job updates
+- [ ] Support for full manga chapters
+- [ ] Multi-language support (dubbing/subtitles)
+
+## License
+
+MIT
+
+## Contributing
+
+See CONTRIBUTING.md
