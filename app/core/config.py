@@ -1,4 +1,4 @@
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     # API Settings
@@ -20,7 +20,6 @@ class Settings(BaseSettings):
     # Ollama
     OLLAMA_BASE_URL: str = "http://localhost:11434"
 
-    class Config:
-        case_sensitive = True
+    model_config = SettingsConfigDict(case_sensitive=True)
 
 settings = Settings()
