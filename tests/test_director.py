@@ -34,31 +34,94 @@ def db_session():
     yield TestingSessionLocal
 
 
-def test_director_initialization(db_session):
-    agent = DirectorAgent(db_session=db_session)
-    assert agent is not None
-    assert hasattr(agent, 'settings')
+class TestDirectorAgent:
+    def test_director_initialization(self, db_session):
+        agent = DirectorAgent(db_session=db_session)
+        assert agent is not None
+        assert hasattr(agent, 'settings')
 
+    def test_process_manga_request_creates_job(self, db_session, mocker):
+        agent = DirectorAgent(db_session=db_session)
 
-def test_process_manga_request(db_session):
-    agent = DirectorAgent(db_session=db_session)
-    manga_data = {
-        "filename": "test_manga.jpg",
-        "page_url": "http://example.com/page1.jpg"
-    }
-    job_id = agent.process_manga_request(manga_data)
-    assert isinstance(job_id, int)
-    assert job_id > 0
+        mock_analyze = mocker.patch.object(agent, 'manga_analyzer')
+        mock_analyze.analyze.return_value = {
+            "characters": [], "setting": "test", "action": "",
+            "dialogue": [], "mood": ""
+        }
 
+        mock_compose = mocker.patch.object(agent, 'scene_composer')
+        mock_compose.compose.return_value = [{
+            "scene_id": 1, "duration": 8.0, "characters": [],
+            "description": "test", "camera": {}, "lighting": {},
+            "dialogue": [], "transition": "cut"
+        }]
 
-def test_get_next_task(db_session):
-    agent = DirectorAgent(db_session=db_session)
-    manga_data = {
-        "filename": "test_manga.jpg",
-        "page_url": "http://example.com/page1.jpg"
-    }
-    job_id = agent.process_manga_request(manga_data)
-    task = agent.get_next_task(job_id)
-    assert task["job_id"] == job_id
-    assert task["task_type"] == "process_scene"
-    assert task["data"]["scene_id"] is not None
+        mock_prompt = mocker.patch.object(agent, 'prompt_builder')
+        mock_prompt.build_prompts.return_value = [{
+            "scene_id": 1, "scene_number": 1, "duration": 8.0,
+            "prompt_text": "test prompt"
+        }]
+
+        job_id = agent.process_manga_request({
+            "filename": "test.png",
+            "image": "base64data",
+            "character_mapping": {"Goku": "personaje_1"},
+            "options": {"max_scenes": 3}
+        })
+
+        assert isinstance(job_id, int)
+        assert job_id > 0
+
+        db = db_session()
+        from app.models import Job, Scene, Asset
+        job = db.query(Job).filter(Job.id == job_id).first()
+        assert job is not None
+        assert job.status == "completed"
+        assert job.manga_filename == "test.png"
+
+        scenes = db.query(Scene).filter(Scene.job_id == job_id).all()
+        assert len(scenes) == 1
+
+        assets = db.query(Asset).filter(Asset.job_id == job_id).all()
+        assert len(assets) == 1
+        assert assets[0].asset_type.value == "prompt"
+        db.close()
+
+    def test_get_next_task(self, db_session, mocker):
+        agent = DirectorAgent(db_session=db_session)
+
+        mock_analyze = mocker.patch.object(agent, 'manga_analyzer')
+        mock_analyze.analyze.return_value = {
+            "characters": [], "setting": "test", "action": "",
+            "dialogue": [], "mood": ""
+        }
+
+        mock_compose = mocker.patch.object(agent, 'scene_composer')
+        mock_compose.compose.return_value = [{
+            "scene_id": 1, "duration": 8.0, "characters": [],
+            "description": "test", "camera": {}, "lighting": {},
+            "dialogue": [], "transition": "cut"
+        }]
+
+        mock_prompt = mocker.patch.object(agent, 'prompt_builder')
+        mock_prompt.build_prompts.return_value = [{
+            "scene_id": 1, "scene_number": 1, "duration": 8.0,
+            "prompt_text": "test prompt"
+        }]
+
+        job_id = agent.process_manga_request({
+            "filename": "test.png",
+            "image": "base64data",
+            "character_mapping": {},
+            "options": {}
+        })
+
+        task = agent.get_next_task(job_id)
+        assert task["job_id"] == job_id
+        assert task["task_type"] == "completed"
+        assert task["status"] == "completed"
+
+    def test_get_next_task_not_found(self, db_session):
+        agent = DirectorAgent(db_session=db_session)
+        task = agent.get_next_task(9999)
+        assert task == {"error": "Job not found"}

@@ -10,6 +10,7 @@ class AssetType(str, enum.Enum):
     AUDIO = "audio"
     EFFECT = "effect"
     MUSIC = "music"
+    PROMPT = "prompt"
 
 class Asset(Base):
     __tablename__ = "assets"
