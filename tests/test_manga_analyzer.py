@@ -21,7 +21,9 @@ class TestMangaAnalyzer:
         assert "characters" in result
         assert "setting" in result
         assert "action" in result
+        assert "dialogue" in result
         assert "mood" in result
+        assert "panels" in result
         assert isinstance(result["characters"], list)
 
     def test_analyze_with_empty_image(self, mocker):

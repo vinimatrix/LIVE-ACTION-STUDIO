@@ -64,7 +64,7 @@ pytest
 - [x] FX generation agent (simulated)
 - [x] Editor agent for final assembly (simulated)
 - [x] API endpoints for job management
-- [ ] Frontend interface (optional)
+- [x] Frontend interface (basic) - `frontend/`
 - [ ] Real AI model integrations (future work)
 - [ ] Advanced editing features (color grading, transitions, etc.)
 - [ ] User authentication and authorization

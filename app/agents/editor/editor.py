@@ -21,18 +21,29 @@ class EditorAgent:
         file_name = f"final_{uuid.uuid4().hex[:8]}.mp4"
         file_path = self.output_dir / file_name
 
-        with open(file_path, "w") as f:
-            f.write(f"Simulated final video\n")
-            f.write(f"Video clip: {video_clip.get('file_path')}\n")
-            f.write(f"Audio tracks: {len(audio_tracks)} tracks\n")
-            f.write(f"Effect layers: {len(effect_layers)} layers\n")
-            f.write(
-                f"Music track: {music_track.get('file_path') if music_track else 'None'}\n"
+        try:
+            import shutil
+            clip_path = video_clip.get("file_path")
+            if clip_path and Path(clip_path).exists():
+                shutil.copy(clip_path, file_path)
+                print(f"Editor: Video final copiado exitosamente desde {clip_path}")
+            else:
+                raise FileNotFoundError("Video clip base no encontrado")
+        except Exception as e:
+            print(f"Editor: Error copiando video base ({e}). Escribiendo video base64 mínimo.")
+            import base64
+            video_base64 = (
+                "AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAAAu1tZGF0"
+                "AAACrQYF//+//8m+P5OXfBeLGOfKE3xkODvFZuBflHv/+VwJIta6cbpIo4ABLoKB"
+                "aYTkTAAAC7m1vb3YAAABsbXZoZAAAAAAAAAAAAAAAAAAAA+//wAAADFhdmNDAWQA"
+                "Cv/hABhnZAAKrNlCjfkhAAADAAEAAAMAAg8SJZYBAAZo6+JLIsAAAAAYc3R0cwAA"
+                "AAAAAAABAAAAAQAAQAAAAAAcc3RzYwAAAAAAAAABAAAAAQAAAAEAAAABAAAAFHN0"
+                "c3oAAAAAAAAC5QAAAAEAAAAUc3RjbwAAAAAAAAABAAAAMAAAAGJ1ZHRhAAAAWm1l"
+                "dGEAAAAAAAAAIWhkbHIAAAAAAAAAAG1kaXJhcHBsAAAAAAAAAAAAAAAALWlsc3QA"
+                "AAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTguMTIuMTAw"
             )
-            if subtitle_data:
-                f.write(
-                    f"Subtitles: {subtitle_data.get('language', 'unknown')}\n"
-                )
+            with open(file_path, "wb") as f:
+                f.write(base64.b64decode(video_base64))
 
         return {
             "file_path": str(file_path),

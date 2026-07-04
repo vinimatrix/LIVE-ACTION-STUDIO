@@ -20,7 +20,7 @@ Responde SOLO con JSON válido, sin markdown ni explicaciones."""
 
         payload = {
             "model": self.model,
-            "prompt": f"{system_prompt}\n\nAnaliza esta página de manga (filename: {filename}):",
+            "prompt": f"{system_prompt}\n\nAnaliza esta página de manga:",
             "images": [image_base64],
             "stream": False,
             "options": {"temperature": 0.1}
@@ -37,4 +37,4 @@ Responde SOLO con JSON válido, sin markdown ni explicaciones."""
                 response_text = result.get("response", "{}")
                 return json.loads(response_text)
         except Exception as e:
-            return {"error": str(e), "characters": [], "setting": "", "action": "", "dialogue": [], "mood": ""}
+            return {"error": str(e), "characters": [], "setting": "", "action": "", "dialogue": [], "mood": "", "panels": []}
