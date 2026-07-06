@@ -12,6 +12,8 @@ sys.path.append(os.getcwd())
 from app.db.session import Base
 from app.models import Job, Scene, Asset
 from app.agents.director.director import DirectorAgent
+from app.agents.storyboard.storyboard import StoryboardAgent
+from app.agents.flow_prompt_builder.flow_prompt_builder import FlowPromptBuilderAgent
 
 def parse_arguments():
     parser = argparse.ArgumentParser(
@@ -112,25 +114,66 @@ def main():
         # Ordenar por número de escena
         assets = sorted(assets, key=lambda a: a.generation_metadata.get("scene_number", 0))
         
-        all_prompts = []
+        all_scene_prompts = []
         for asset in assets:
             prompt_text = asset.generation_metadata.get("prompt", "")
-            all_prompts.append(prompt_text)
-            all_prompts.append("\n" + "=" * 80 + "\n")
-            
-        # Escribir en archivo de salida
+            all_scene_prompts.append(prompt_text)
+            all_scene_prompts.append("\n" + "=" * 80 + "\n")
+
+        # ── 2. GENERAR STORYBOARD PROMPTS ──
+        print("\n=== GENERANDO PROMPTS DE STORYBOARD ===")
+        scenes_data = []
+        scenes_db = db.query(Scene).filter(Scene.job_id == job_id).all()
+        for sc in scenes_db:
+            sc_meta = next((a.generation_metadata for a in assets if a.scene_id == sc.id), {})
+            scenes_data.append({
+                "scene_id": sc.id,
+                "duration": sc.duration,
+                "characters": sc_meta.get("characters", []),
+                "description": sc.description,
+                "camera": sc_meta.get("camera", {}),
+                "lighting": sc_meta.get("lighting", {}),
+                "dialogue": sc_meta.get("dialogue", []),
+                "transition": "cut"
+            })
+
+        storyboard_agent = StoryboardAgent()
+        prompt_builder = FlowPromptBuilderAgent()
+        storyboard_prompts = prompt_builder.build_storyboard_prompts(
+            scenes_data, character_mapping, storyboard_agent
+        )
+
+        all_storyboard_prompts = []
+        for sp in storyboard_prompts:
+            all_storyboard_prompts.append(sp["prompt_text"])
+            all_storyboard_prompts.append("\n" + "=" * 80 + "\n")
+
+        # ── 3. GUARDAR ARCHIVO DE SALIDA ──
         output_dir = os.path.dirname(args.output)
         if output_dir:
             os.makedirs(output_dir, exist_ok=True)
-            
+
+        output_lines = []
+        output_lines.append("=== PROMPTS DE ESCENA ===")
+        output_lines.append("")
+        output_lines.extend(all_scene_prompts)
+        output_lines.append("")
+        output_lines.append("=" * 80)
+        output_lines.append("")
+        output_lines.append("=== PROMPTS DE STORYBOARD ===")
+        output_lines.append("")
+        output_lines.extend(all_storyboard_prompts)
+
         with open(args.output, "w", encoding="utf-8") as out_file:
-            out_file.write("\n".join(all_prompts))
-            
-        print(f"\n=== PROMPTS ESTRUCTURADOS GENERADOS ({len(assets)} ESCENAS) ===")
-        for prompt in all_prompts:
-            print(prompt)
-            
-        print(f"\nPrompts estructurados guardados en: {args.output}")
+            out_file.write("\n".join(output_lines))
+
+        print(f"\n=== RESULTADOS ===")
+        print(f"Prompts de escena generados: {len(assets)}")
+        print(f"Prompts de storyboard generados: {len(storyboard_prompts)}")
+        print(f"\nArchivo guardado en: {args.output}")
+        print(f"\n--- PRIMER PROMPT DE STORYBOARD ---")
+        if all_storyboard_prompts:
+            print(all_storyboard_prompts[0])
         
     finally:
         db.close()
