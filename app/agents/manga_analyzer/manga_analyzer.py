@@ -12,7 +12,7 @@ class MangaAnalyzerAgent:
 - characters: lista de personajes (name, appearance, expression, position)
 - setting: descripción del escenario
 - action: acción principal
-- dialogue: diálogos visibles
+- dialogue: diálogos visibles (traducidos y adaptados a español latino neutro si provienen de español de España u otros idiomas)
 - mood: atmósfera/estado de ánimo
 - panels: estructura de paneles
 

@@ -9,7 +9,10 @@ def test_image_generator_initialization():
     assert hasattr(agent, 'output_dir')
 
 
-def test_generate_image():
+def test_generate_image(mocker):
+    import urllib.error
+    mocker.patch('urllib.request.urlopen', side_effect=urllib.error.URLError("Mocked Connection Refused"))
+
     agent = ImageGeneratorAgent()
     prompt = "A beautiful landscape"
     result = agent.generate_image(prompt, scene_id=1)

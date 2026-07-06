@@ -36,7 +36,7 @@ class ImageGeneratorAgent:
         req = urllib.request.Request(f"{self.comfyui_url}/prompt", data=data)
         
         try:
-            with urllib.request.urlopen(req) as response:
+            with urllib.request.urlopen(req, timeout=5) as response:
                 result = json.loads(response.read())
                 prompt_id = result['prompt_id']
                 
@@ -44,7 +44,7 @@ class ImageGeneratorAgent:
             while True:
                 time.sleep(2)
                 hist_req = urllib.request.Request(f"{self.comfyui_url}/history/{prompt_id}")
-                with urllib.request.urlopen(hist_req) as hist_res:
+                with urllib.request.urlopen(hist_req, timeout=5) as hist_res:
                     history = json.loads(hist_res.read())
                     if prompt_id in history:
                         outputs = history[prompt_id]['outputs']

@@ -26,17 +26,19 @@ class PromptBuilderAgent:
         movement = camera.get("movement", "static")
 
         prompt = (
-            f"A cinematic scene: {description}. Featuring {character_str}. "
+            f"A photorealistic live-action cinematic scene: {description}. Featuring {character_str}. "
             f"Setting: {env_desc}. Shot type: {shot_type}, {movement}. "
-            f"High detail, professional photography, 8k."
+            f"Ultra realistic, 8k resolution, highly detailed skin textures, volumetric lighting, "
+            f"shot on 35mm lens, professional cinematography, movie-like quality, no CGI, no 3D render. "
+            f"Strictly maintain consistency with the characters and location without hallucinating extra details."
         )
 
         return prompt
 
     def build_video_prompt(self, image_prompt: str, duration: float) -> str:
         return (
-            f"{image_prompt}, smooth motion over {duration} seconds, "
-            f"cinematic video, professional film quality"
+            f"{image_prompt}, smooth realistic motion over {duration} seconds, "
+            f"live-action cinematic video, photorealistic professional film quality"
         )
 
     def build_voice_prompt(self, dialogue: Dict[str, Any]) -> str:

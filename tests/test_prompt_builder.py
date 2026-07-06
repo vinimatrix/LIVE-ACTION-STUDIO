@@ -43,7 +43,7 @@ def test_build_video_prompt():
     video_prompt = agent.build_video_prompt(image_prompt, 6.0)
 
     assert "beautiful landscape" in video_prompt
-    assert "smooth motion over 6.0 seconds" in video_prompt
+    assert "smooth realistic motion over 6.0 seconds" in video_prompt
     assert "cinematic video" in video_prompt
 
 

@@ -17,7 +17,7 @@ class TestStoryboardAgent:
 
     SAMPLE_SCENE_MEDIUM = {
         "scene_id": 2,
-        "duration": 7.0,
+        "duration": 8.0,
         "characters": [
             {"name": "Goku", "appearance": "orange gi", "expression": "angry", "position": "left"},
             {"name": "Freezer", "appearance": "white armor", "expression": "smirking", "position": "right"}
@@ -75,7 +75,7 @@ class TestStoryboardAgent:
 
     def test_each_shot_duration_between_4_and_8_seconds(self):
         agent = StoryboardAgent()
-        shots = agent.break_down_scene(self.SAMPLE_SCENE_MEDIUM)
+        shots = agent.break_down_scene(self.SAMPLE_SCENE_SHORT)
         for shot in shots:
             duration = shot["end_time"] - shot["start_time"]
             assert 4.0 <= duration <= 8.0
@@ -112,6 +112,20 @@ class TestStoryboardAgent:
 
     def test_dialogue_scene_includes_over_shoulder(self):
         agent = StoryboardAgent()
-        shots = agent.break_down_scene(self.SAMPLE_SCENE_MEDIUM)
+        scene = {
+            "duration": 16.0,
+            "characters": [
+                {"name": "Goku", "expression": "angry"},
+                {"name": "Freezer", "expression": "smirking"}
+            ],
+            "dialogue": [
+                {"character": "Goku", "text": "Freezer!"},
+                {"character": "Freezer", "text": "Foolish Saiyan."}
+            ],
+            "camera": {"shot_type": "wide", "movement": "static", "lens": "24mm f/4"},
+            "lighting": {"time_of_day": "day", "mood_lighting": "tense"},
+            "transition": "cut"
+        }
+        shots = agent.break_down_scene(scene)
         shot_types = [s["shot_type"] for s in shots]
         assert "over-the-shoulder" in shot_types

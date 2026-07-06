@@ -4,19 +4,21 @@ from typing import Dict, Any, List
 class FlowPromptBuilderAgent:
     def build_prompts(self, scenes: List[Dict[str, Any]], character_mapping: Dict[str, str]) -> List[Dict[str, Any]]:
         prompts = []
+        start_time = 0.0
         for i, scene in enumerate(scenes):
-            prompt_text = self._build_prompt(scene, character_mapping, i + 1)
+            duration = scene.get("duration", 8.0)
+            prompt_text = self._build_prompt(scene, character_mapping, i + 1, start_time)
             prompts.append({
                 "scene_id": scene["scene_id"],
                 "scene_number": i + 1,
-                "duration": scene["duration"],
+                "duration": duration,
                 "prompt_text": prompt_text
             })
+            start_time += duration
         return prompts
 
-    def _build_prompt(self, scene: Dict[str, Any], character_mapping: Dict[str, str], scene_num: int) -> str:
+    def _build_prompt(self, scene: Dict[str, Any], character_mapping: Dict[str, str], scene_num: int, start_time: float) -> str:
         duration = scene.get("duration", 8.0)
-        start_time = sum(scene.get("duration", 8.0) for _ in range(scene_num - 1))
         end_time = start_time + duration
 
         lines = []
@@ -73,25 +75,25 @@ class FlowPromptBuilderAgent:
         lines.append("")
 
         # SPECS TECNICAS
-        lines.append("SPECS T\u00c9CNICAS:")
-        lines.append("  - Resoluci\u00f3n: 8K (7680x4320)")
-        lines.append("  - Estilo: hiperrealista, cinematogr\u00e1fico")
-        lines.append("  - Texturas: detalladas, PBR")
-        lines.append("  - Iluminaci\u00f3n: volumetric lighting, global illumination")
-        lines.append("  - Post-procesado: color grading cinematogr\u00e1fico, grain sutil")
-        lines.append("  - Motion blur: obturador 180\u00b0, natural")
-        lines.append("  - Profundidad de campo: acorde al shot")
+        lines.append("SPECS TÉCNICAS:")
+        lines.append("  - Resolución: 8K (7680x4320)")
+        lines.append("  - Estilo: live-action hiperrealista, cinematográfico, fotorrealista")
+        lines.append("  - Texturas: extremadamente detalladas, poros de la piel realistas, texturas PBR")
+        lines.append("  - Iluminación: volumetric lighting, cinematic lighting, global illumination")
+        lines.append("  - Post-procesado: color grading cinematográfico, grain sutil de película analógica, sin CGI, sin renderizado 3D")
+        lines.append("  - Motion blur: obturador 180°, movimiento realista natural")
+        lines.append("  - Profundidad de campo: acorde al shot, f/1.8 o f/2.8 característico")
         lines.append("")
 
-        # ANTI-ALUCINACION
-        lines.append("ANTI-ALUCINACI\u00d3N:")
+        # ANTI-ALUCINACIÓN
+        lines.append("ANTI-ALUCINACIÓN:")
         for name in scene.get("characters", []):
             n = name.get("name", "")
             flow_ref = character_mapping.get(n, n)
-            lines.append(f"  - Mantener dise\u00f1o de {n} (ref: {flow_ref}) exactamente como en la referencia de Flow")
-        lines.append("  - No a\u00f1adir objetos, personajes o elementos no descritos")
-        lines.append("  - Fondo coherente con la descripci\u00f3n del escenario")
-        lines.append("  - Respetar iluminaci\u00f3n y hora del d\u00eda especificadas")
+            lines.append(f"  - Mantener consistencia total del diseño y rostro de {n} (ref: {flow_ref}) exactamente como en la referencia de Flow")
+        lines.append("  - No alucinar ni añadir objetos, personajes o elementos no descritos")
+        lines.append("  - Fondo coherente y consistente con la historia narrada y descripción del escenario")
+        lines.append("  - Respetar iluminación y hora del día especificadas")
         lines.append("  - No cambiar expresiones faciales ni poses indicadas")
 
         return "\n".join(lines)

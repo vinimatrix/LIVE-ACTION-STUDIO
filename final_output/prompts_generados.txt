@@ -1,0 +1,40 @@
+ESCENA 1 (00:00 - 00:08)
+──────────────────────────────────────────────────
+
+PERSONAJES:
+
+ESCENARIO:
+  - Descripción: 
+  - Hora: day
+
+CÁMARA:
+  - Shot: wide
+  - Movimiento: static
+  - Lente: 35mm f/2.8
+
+ILUMINACIÓN:
+  - Ambiente: day lighting
+  - Mood: 
+
+MOOD: 
+
+ACCIÓN:
+  - 
+  - Duración: 8.0 segundos
+
+SPECS TÉCNICAS:
+  - Resolución: 8K (7680x4320)
+  - Estilo: live-action hiperrealista, cinematográfico, fotorrealista
+  - Texturas: extremadamente detalladas, poros de la piel realistas, texturas PBR
+  - Iluminación: volumetric lighting, cinematic lighting, global illumination
+  - Post-procesado: color grading cinematográfico, grain sutil de película analógica, sin CGI, sin renderizado 3D
+  - Motion blur: obturador 180°, movimiento realista natural
+  - Profundidad de campo: acorde al shot, f/1.8 o f/2.8 característico
+
+ANTI-ALUCINACIÓN:
+  - No alucinar ni añadir objetos, personajes o elementos no descritos
+  - Fondo coherente y consistente con la historia narrada y descripción del escenario
+  - Respetar iluminación y hora del día especificadas
+  - No cambiar expresiones faciales ni poses indicadas
+
+================================================================================

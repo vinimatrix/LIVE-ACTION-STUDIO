@@ -12,6 +12,7 @@ from app.agents.screenwriter.screenwriter import ScreenwriterAgent
 from app.agents.character_manager.character_manager import CharacterManagerAgent
 from app.agents.environment_manager.environment_manager import EnvironmentManagerAgent
 from app.agents.prompt_builder.prompt_builder import PromptBuilderAgent
+from app.agents.flow_prompt_builder.flow_prompt_builder import FlowPromptBuilderAgent
 from app.agents.image_generator.image_generator import ImageGeneratorAgent
 from app.agents.video_generator.video_generator import VideoGeneratorAgent
 from app.agents.voice_generator.voice_generator import VoiceGeneratorAgent
@@ -42,6 +43,7 @@ screenwriter = ScreenwriterAgent()
 character_manager = CharacterManagerAgent(db_session=SessionLocal)
 environment_manager = EnvironmentManagerAgent(db_session=SessionLocal)
 prompt_builder = PromptBuilderAgent()
+flow_prompt_builder = FlowPromptBuilderAgent()
 image_generator = ImageGeneratorAgent()
 video_generator = VideoGeneratorAgent()
 voice_generator = VoiceGeneratorAgent()
@@ -120,7 +122,7 @@ scenes_data = [
         "manga_page_reference": "Panel 1 (Superior)",
         "description": "Sarada Uchiha apoya con frustración sus manos sobre el escritorio del Hokage, inclinándose hacia adelante con el rostro crispado de angustia e impotencia, gritando para hacerse oír.",
         "dialogue": [
-            {"character": "Sarada Uchiha", "text": "¡¿Por qué no me entendéis?! ¡¡Ya os lo he explicado un millón de veces!!", "emotion": "frustrada y desesperada"}
+            {"character": "Sarada Uchiha", "text": "¡¿Por qué no me entienden?! ¡¡Ya se los he explicado un millón de veces!!", "emotion": "frustrada y desesperada"}
         ],
         "actions": ["Sarada golpea suavemente el escritorio con impotencia.", "La cámara se enfoca en Sarada, mostrando su agitación."],
         "duration": 5.0,
@@ -133,7 +135,7 @@ scenes_data = [
         "manga_page_reference": "Panel 2 (Izquierda)",
         "description": "Primer plano de los ojos de Shikamaru Nara, fijos en Sarada, con una expresión de severa tristeza y peso institucional mientras recita los graves cargos.",
         "dialogue": [
-            {"character": "Shikamaru Nara", "text": "Tuvo la caradura de matar al Hokage... e intentó acabar con su hijo Kawaki. Es un traidor. No se librará del castigo.", "emotion": "severo y frío"}
+            {"character": "Shikamaru Nara", "text": "Tuvo el descaro de matar al Hokage... e intentó acabar con su hijo Kawaki. Es un traidor. No se librará del castigo.", "emotion": "severo y frío"}
         ],
         "actions": ["Shikamaru entorna los ojos con gravedad.", "La iluminación cenital resalta la dureza en sus facciones."],
         "duration": 6.0,
@@ -183,6 +185,9 @@ for sc_idx, sc_data in enumerate(scenes_data):
 # 6. Procesar cada escena a través del pipeline completo
 print("\n=== 6. PROCESANDO ESCENAS A TRAVÉS DE LOS AGENTES GENERATIVOS ===")
 scene_assets_map = {}
+all_prompts_log = []
+flow_scenes = []
+char_map_combined = {}
 
 for idx, sc in enumerate(db_scenes):
     print(f"\n--- Procesando Escena {idx + 1}: {sc.manga_page_reference} ---")
@@ -224,10 +229,41 @@ for idx, sc in enumerate(db_scenes):
     music_prompt = prompt_builder.build_music_prompt(scene_full_data)
     effects_prompt = prompt_builder.build_effects_prompt(screenplay_result)
 
-    print(f"  [PromptBuilder] Prompts creados.")
+    print(f"  [PromptBuilder] Prompts de generación planos creados.")
+
+    # Preparar escena para FlowPromptBuilderAgent
+    flow_characters = []
+    for c_name, c_data in char_data_processed.get("character_data", {}).items():
+        flow_characters.append({
+            "name": c_name,
+            "appearance": ", ".join(c_data.get("personality_traits", [])),
+            "expression": screenplay_result["dialogue"][0].get("emotion", "neutral") if screenplay_result["dialogue"] else "neutral",
+            "position": "frame"
+        })
+        char_map_combined[c_name] = c_name
+    
+    flow_scenes.append({
+        "scene_id": sc.id,
+        "duration": sc.duration,
+        "characters": flow_characters,
+        "description": sc.description,
+        "camera": {
+            "shot_type": sc.shot_type,
+            "movement": sc.camera_movement,
+            "lens": "35mm f/1.8"
+        },
+        "lighting": {
+            "time_of_day": "day",
+            "mood_lighting": "cinematic_anime"
+        },
+        "dialogue": screenplay_result["dialogue"],
+        "transition": "cut" if idx > 0 else "fade_in"
+    })
 
     # Image Generator (Crea PNG real con Pillow)
     image_asset_data = image_generator.generate_image(image_prompt, scene_id=sc.id)
+    image_meta = dict(image_asset_data["generation_params"])
+    image_meta["prompt"] = image_prompt
     image_asset = Asset(
         job_id=job.id,
         scene_id=sc.id,
@@ -235,7 +271,7 @@ for idx, sc in enumerate(db_scenes):
         file_path=image_asset_data["file_path"],
         file_size=image_asset_data["file_size"],
         mime_type=image_asset_data["mime_type"],
-        generation_metadata=image_asset_data["generation_params"]
+        generation_metadata=image_meta
     )
     db.add(image_asset)
     print(f"  [ImageGen] Imagen guardada en: {image_asset.file_path}")
@@ -246,6 +282,8 @@ for idx, sc in enumerate(db_scenes):
         prompt=video_prompt,
         duration=sc.duration
     )
+    video_meta = dict(video_asset_data["generation_params"])
+    video_meta["prompt"] = video_prompt
     video_asset = Asset(
         job_id=job.id,
         scene_id=sc.id,
@@ -253,7 +291,7 @@ for idx, sc in enumerate(db_scenes):
         file_path=video_asset_data["file_path"],
         file_size=video_asset_data["file_size"],
         mime_type=video_asset_data["mime_type"],
-        generation_metadata=video_asset_data["generation_params"]
+        generation_metadata=video_meta
     )
     db.add(video_asset)
     print(f"  [VideoGen] Video guardado en: {video_asset.file_path}")
@@ -325,6 +363,32 @@ for idx, sc in enumerate(db_scenes):
         "music": music_asset
     }
 
+# Generar prompts estructurados con secuencia de tiempo continua
+print("\n=== 6.5 GENERANDO PROMPTS ESTRUCTURADOS CON TIEMPOS CONTINUOS ===")
+structured_prompt_list = flow_prompt_builder.build_prompts(flow_scenes, char_map_combined)
+for p_idx, p_data in enumerate(structured_prompt_list):
+    prompt_text = p_data["prompt_text"]
+    all_prompts_log.append(prompt_text)
+    all_prompts_log.append("\n" + "=" * 80 + "\n")
+    
+    # Crear y guardar el asset del prompt estructurado en la DB
+    sc = db_scenes[p_idx]
+    prompt_asset = Asset(
+        job_id=job.id,
+        scene_id=sc.id,
+        asset_type="prompt",
+        file_path="",
+        mime_type="text/markdown",
+        generation_metadata={
+            "prompt": prompt_text,
+            "scene_number": p_idx + 1,
+            "duration": sc.duration
+        }
+    )
+    db.add(prompt_asset)
+    print(f"  [FlowPromptBuilder] Prompt estructurado generado y guardado para Escena {p_idx + 1}")
+db.commit()
+
 # 7. Editor Agent: Ensamblado y composición del capítulo final
 print("\n=== 7. EDITOR AGENT: COMPONIENDO EL EPISODIO FINAL ===")
 
@@ -377,8 +441,15 @@ job.current_step = "final_production_render"
 job.total_duration = sum(sc.duration for sc in db_scenes)
 db.commit()
 
+# Guardar prompts generados en un archivo de texto
+os.makedirs("final_output", exist_ok=True)
+prompts_file_path = os.path.join("final_output", "prompts_generados.txt")
+with open(prompts_file_path, "w", encoding="utf-8") as pf:
+    pf.write("\n".join(all_prompts_log))
+
 print(f"\n¡EL EPISODIO DEL MANGA DE BORUTO HA SIDO PROCESADO EXITOSAMENTE!")
 print(f"- Ruta del video final: {final_boruto_video_path}")
+print(f"- Ruta del archivo de prompts: {prompts_file_path}")
 print(f"- Duración total: {job.total_duration} segundos")
 print(f"- Resolución: 1920x1080 (HD)")
 print(f"- Color grading: cinematic_anime (específico para Boruto: Two Blue Vortex)")
