@@ -212,3 +212,60 @@ class TestStoryboardInternalMethods:
         }
         shots = agent._build_dialogue_one(scene)
         assert "Goku" in shots[1]["description"]
+
+
+class TestStoryboardStyledAction:
+    SAMPLE_ACTION_SCENE = {
+        "duration": 10.0,
+        "characters": [
+            {"name": "Goku", "appearance": "orange gi", "expression": "determined", "position": "center"}
+        ],
+        "description": "Goku charges at Freezer with full speed, explosion in background",
+        "camera": {"shot_type": "wide", "movement": "tracking", "lens": "35mm f/2.8"},
+        "lighting": {"time_of_day": "day", "mood_lighting": "intense"},
+        "dialogue": [{"character": "Goku", "text": "Freezer!"}],
+        "transition": "cut"
+    }
+
+    def test_break_down_scene_accepts_director_style(self):
+        agent = StoryboardAgent()
+        shots = agent.break_down_scene(self.SAMPLE_ACTION_SCENE, director_style="michael_bay")
+        assert len(shots) > 0
+
+    def test_styled_action_shots_have_slow_motion_field(self):
+        agent = StoryboardAgent()
+        shots = agent.break_down_scene(self.SAMPLE_ACTION_SCENE, director_style="russo_brothers")
+        for shot in shots:
+            assert "slow_motion" in shot
+
+    def test_styled_action_shots_have_lens_flare_field(self):
+        agent = StoryboardAgent()
+        shots = agent.break_down_scene(self.SAMPLE_ACTION_SCENE, director_style="michael_bay")
+        for shot in shots:
+            assert "lens_flare" in shot
+
+    def test_styled_action_shots_have_director_style_field(self):
+        agent = StoryboardAgent()
+        shots = agent.break_down_scene(self.SAMPLE_ACTION_SCENE, director_style="sam_raimi")
+        for shot in shots:
+            assert shot["director_style"] == "sam_raimi"
+
+    def test_michael_bay_action_uses_preferred_movements(self):
+        agent = StoryboardAgent()
+        shots = agent.break_down_scene(self.SAMPLE_ACTION_SCENE, director_style="michael_bay")
+        movements = [s["movement"] for s in shots]
+        preferred = {"360_orbit", "crane_up", "drone_sweep", "whip_pan"}
+        assert any(m in preferred for m in movements)
+
+    def test_russo_brothers_action_uses_handheld_or_steadicam(self):
+        agent = StoryboardAgent()
+        shots = agent.break_down_scene(self.SAMPLE_ACTION_SCENE, director_style="russo_brothers")
+        movements = [s["movement"] for s in shots]
+        assert any("handheld" in m or "steadicam" in m for m in movements)
+
+    def test_no_style_falls_back_to_default_behavior(self):
+        agent = StoryboardAgent()
+        default_shots = agent.break_down_scene(dict(self.SAMPLE_ACTION_SCENE, lighting={"time_of_day": "day", "mood_lighting": "intense"}))
+        agent2 = StoryboardAgent()
+        styled_shots = agent2.break_down_scene(dict(self.SAMPLE_ACTION_SCENE, lighting={"time_of_day": "day", "mood_lighting": "intense"}), director_style=None)
+        assert len(default_shots) == len(styled_shots)

@@ -1,4 +1,5 @@
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
+from app.agents.director_styles import DIRECTOR_STYLES, resolve_style
 
 
 class StoryboardAgent:
@@ -20,13 +21,19 @@ class StoryboardAgent:
     PATTERN_ACTION = ["wide", "tracking", "close-up"]
     PATTERN_SILENT = ["wide", "slow_push-in", "extreme-close-up"]
 
-    def break_down_scene(self, scene: Dict[str, Any]) -> List[Dict[str, Any]]:
+    def break_down_scene(self, scene: Dict[str, Any], director_style: Optional[str] = None) -> List[Dict[str, Any]]:
         duration = scene.get("duration", 8.0)
         characters = scene.get("characters", [])
         dialogue = scene.get("dialogue", [])
         mood = scene.get("lighting", {}).get("mood_lighting", "neutral")
         camera = scene.get("camera", {})
         description = scene.get("description", "")
+
+        style = resolve_style(director_style, mood)
+        config = DIRECTOR_STYLES.get(style)
+
+        if config and self._is_action_scene(mood):
+            return self._build_action_styled(scene, config, style)
 
         if duration <= 5.0:
             return [self._build_single_shot(scene, 0, duration, camera, "fade_in" if scene.get("transition") == "fade_in" else "cut", "cut")]
@@ -52,7 +59,11 @@ class StoryboardAgent:
             "characters_in_frame": [c["name"] for c in scene.get("characters", [])],
             "focus": scene.get("description", ""),
             "transition_in": trans_in,
-            "transition_out": trans_out
+            "transition_out": trans_out,
+            "slow_motion": False,
+            "lens_flare": False,
+            "dutch_angle": 0,
+            "director_style": None,
         }
 
     def _build_dialogue_one(self, scene):
@@ -170,7 +181,71 @@ class StoryboardAgent:
             "characters_in_frame": characters_in_frame,
             "focus": focus,
             "transition_in": transition_in,
-            "transition_out": transition_out
+            "transition_out": transition_out,
+            "slow_motion": False,
+            "lens_flare": False,
+            "dutch_angle": 0,
+            "director_style": None,
+        }
+
+    def _build_action_styled(self, scene, config, style):
+        duration = scene["duration"]
+        characters = scene.get("characters", [])
+        char_names = [c["name"] for c in characters]
+        n_shots = min(4, max(3, int(duration / 3)))
+        shot_duration = duration / n_shots
+        shots = []
+
+        preferred_shots = config["preferred_shot_types"]
+        preferred_moves = config["preferred_movements"]
+        slow_mo = config["slow_motion"]
+        lens_flare = config.get("lens_flare", False)
+        dutch_angle = config.get("dutch_angle", 0)
+
+        for i in range(n_shots):
+            shot_type = preferred_shots[i % len(preferred_shots)]
+            movement = preferred_moves[i % len(preferred_moves)]
+
+            is_slow_mo = slow_mo["enabled"] and i == n_shots - 1
+            shot_dur = shot_duration
+            if is_slow_mo:
+                slow_factor = slow_mo.get("fps", 24) / 24
+                shot_dur = min(shot_duration * slow_factor, slow_mo.get("max_duration", 4.0))
+
+            start = i * shot_duration
+            end = start + shot_dur
+
+            description = f"{scene.get('description', '')} — {shot_type.replace('_', ' ')} ({movement.replace('_', ' ')})"
+            focus = f"Action beat {i + 1}: {shot_type}"
+
+            shots.append(self._build_shot_styled(
+                scene, i + 1, shot_type, movement, start, end,
+                description, char_names, focus, style,
+                slow_mo=is_slow_mo, lens_flare=lens_flare, dutch_angle=dutch_angle,
+            ))
+
+        return shots
+
+    def _build_shot_styled(self, scene, shot_number, shot_type, movement,
+                           start_time, end_time, description, characters_in_frame,
+                           focus, director_style, slow_mo=False, lens_flare=False,
+                           dutch_angle=0):
+        return {
+            "shot_number": shot_number,
+            "start_time": start_time,
+            "end_time": end_time,
+            "shot_type": shot_type,
+            "movement": movement,
+            "lens": scene.get("camera", {}).get("lens", "35mm f/2.8"),
+            "description": description,
+            "characters_in_frame": characters_in_frame,
+            "focus": focus,
+            "transition_in": "cut" if shot_number > 1 else scene.get("transition", "cut"),
+            "transition_out": "cut",
+            "slow_motion": slow_mo,
+            "lens_flare": lens_flare,
+            "dutch_angle": dutch_angle,
+            "director_style": director_style,
         }
 
     def _is_action_scene(self, mood: str) -> bool:
