@@ -29,13 +29,16 @@ class StoryboardAgent:
         camera = scene.get("camera", {})
         description = scene.get("description", "")
 
+        if duration <= 5.0:
+            return [self._build_single_shot(scene, 0, duration, camera, "fade_in" if scene.get("transition") == "fade_in" else "cut", "cut")]
+
         style = resolve_style(director_style, mood)
         config = DIRECTOR_STYLES.get(style)
 
         if config and self._is_action_scene(mood):
             return self._build_action_styled(scene, config, style)
 
-        if duration <= 5.0:
+        
             return [self._build_single_shot(scene, 0, duration, camera, "fade_in" if scene.get("transition") == "fade_in" else "cut", "cut")]
 
         if len(dialogue) >= 2 and len(set(d["character"] for d in dialogue)) >= 2:
