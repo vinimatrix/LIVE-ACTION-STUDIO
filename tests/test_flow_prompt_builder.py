@@ -169,3 +169,46 @@ class TestFlowPromptBuilderStoryboard:
         )
         prompt_text = prompts[0]["prompt_text"]
         assert "ANTI-ALUCINACIÓN" in prompt_text
+
+
+class TestFlowPromptBuilderDirector:
+    SAMPLE_SCENES = [
+        {
+            "scene_id": 1,
+            "duration": 8.0,
+            "characters": [
+                {"name": "Goku", "appearance": "orange gi", "expression": "determined", "position": "center"},
+            ],
+            "description": "Goku charges at Freezer with explosion",
+            "camera": {"shot_type": "low_angle", "movement": "360_orbit", "lens": "35mm f/2.8"},
+            "lighting": {"time_of_day": "sunset", "mood_lighting": "explosive"},
+            "dialogue": [{"character": "Goku", "text": "Freezer!"}],
+            "transition": "cut",
+            "director_style": "michael_bay",
+        }
+    ]
+    CHARACTER_MAPPING = {"Goku": "personaje_1"}
+
+    def test_build_prompts_includes_director_section(self):
+        agent = FlowPromptBuilderAgent()
+        prompts = agent.build_prompts(self.SAMPLE_SCENES, self.CHARACTER_MAPPING, director_style="michael_bay")
+        prompt_text = prompts[0]["prompt_text"]
+        assert "DIRECCIÓN" in prompt_text
+
+    def test_build_prompts_includes_style_name(self):
+        agent = FlowPromptBuilderAgent()
+        prompts = agent.build_prompts(self.SAMPLE_SCENES, self.CHARACTER_MAPPING, director_style="michael_bay")
+        prompt_text = prompts[0]["prompt_text"]
+        assert "Michael Bay" in prompt_text
+
+    def test_build_prompts_no_style_no_director_section(self):
+        agent = FlowPromptBuilderAgent()
+        prompts = agent.build_prompts(self.SAMPLE_SCENES, self.CHARACTER_MAPPING)
+        prompt_text = prompts[0]["prompt_text"]
+        assert "DIRECCIÓN" not in prompt_text
+
+    def test_build_prompts_falls_back_to_mood_style(self):
+        agent = FlowPromptBuilderAgent()
+        prompts = agent.build_prompts(self.SAMPLE_SCENES, self.CHARACTER_MAPPING)
+        prompt_text = prompts[0]["prompt_text"]
+        assert "DIRECCIÓN" not in prompt_text

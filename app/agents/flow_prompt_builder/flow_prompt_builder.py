@@ -1,14 +1,16 @@
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from app.agents.storyboard.storyboard import StoryboardAgent
+from app.agents.director_styles import DIRECTOR_STYLES, resolve_style
 
 
 class FlowPromptBuilderAgent:
-    def build_prompts(self, scenes: List[Dict[str, Any]], character_mapping: Dict[str, str]) -> List[Dict[str, Any]]:
+    def build_prompts(self, scenes: List[Dict[str, Any]], character_mapping: Dict[str, str],
+                      director_style: Optional[str] = None) -> List[Dict[str, Any]]:
         prompts = []
         start_time = 0.0
         for i, scene in enumerate(scenes):
             duration = scene.get("duration", 8.0)
-            prompt_text = self._build_prompt(scene, character_mapping, i + 1, start_time)
+            prompt_text = self._build_prompt(scene, character_mapping, i + 1, start_time, director_style)
             prompts.append({
                 "scene_id": scene["scene_id"],
                 "scene_number": i + 1,
@@ -18,7 +20,8 @@ class FlowPromptBuilderAgent:
             start_time += duration
         return prompts
 
-    def _build_prompt(self, scene: Dict[str, Any], character_mapping: Dict[str, str], scene_num: int, start_time: float) -> str:
+    def _build_prompt(self, scene: Dict[str, Any], character_mapping: Dict[str, str], scene_num: int, start_time: float,
+                      director_style: Optional[str] = None) -> str:
         duration = scene.get("duration", 8.0)
         end_time = start_time + duration
 
@@ -75,6 +78,24 @@ class FlowPromptBuilderAgent:
             lines.append(f"  - Di\u00e1logo: [{d.get('character', '?')}] \"{d.get('text', '')}\"")
         lines.append("")
 
+        # DIRECCIÓN
+        if director_style:
+            mood_val = scene.get("lighting", {}).get("mood_lighting", "neutral")
+            style = resolve_style(director_style, mood_val)
+            config = DIRECTOR_STYLES.get(style)
+            if config:
+                style_name = style.replace("_", " ").title()
+                lines.append("DIRECCIÓN:")
+                lines.append(f"  - Estilo: {style_name}")
+                if config.get("lens_flare"):
+                    lines.append("  - Flares: Activados (anamórficos)")
+                if config.get("dutch_angle", 0) > 0:
+                    lines.append(f"  - Dutch angle: {config['dutch_angle']}°")
+                if config.get("color_grading"):
+                    grading_name = config["color_grading"].replace("_", " ").title()
+                    lines.append(f"  - Color grading: {grading_name}")
+                lines.append("")
+
         # SPECS TECNICAS
         lines.append("SPECS TÉCNICAS:")
         lines.append("  - Resolución: 8K (7680x4320)")
@@ -108,7 +129,8 @@ class FlowPromptBuilderAgent:
         self,
         scenes: List[Dict[str, Any]],
         character_mapping: Dict[str, str],
-        storyboard_agent: StoryboardAgent = None
+        storyboard_agent: StoryboardAgent = None,
+        director_style: Optional[str] = None
     ) -> List[Dict[str, Any]]:
         if storyboard_agent is None:
             storyboard_agent = StoryboardAgent()
@@ -117,8 +139,8 @@ class FlowPromptBuilderAgent:
         start_time = 0.0
         for i, scene in enumerate(scenes):
             duration = scene.get("duration", 8.0)
-            shots = storyboard_agent.break_down_scene(scene)
-            prompt_text = self._build_hybrid_prompt(scene, shots, character_mapping, i + 1, start_time)
+            shots = storyboard_agent.break_down_scene(scene, director_style=director_style)
+            prompt_text = self._build_hybrid_prompt(scene, shots, character_mapping, i + 1, start_time, director_style)
             prompts.append({
                 "scene_id": scene["scene_id"],
                 "scene_number": i + 1,
@@ -134,7 +156,8 @@ class FlowPromptBuilderAgent:
         shots: List[Dict[str, Any]],
         character_mapping: Dict[str, str],
         scene_num: int,
-        start_time: float
+        start_time: float,
+        director_style: Optional[str] = None
     ) -> str:
         duration = scene.get("duration", 8.0)
         end_time = start_time + duration
@@ -203,6 +226,12 @@ class FlowPromptBuilderAgent:
             lines.append("║")
             lines.append(f"║  ACCIÓN: {shot['description']}")
             lines.append(f"║  FOCO: {shot['focus']}")
+            if shot.get("slow_motion"):
+                lines.append(f"║  SLOW-MO: ✅")
+            if shot.get("lens_flare"):
+                lines.append("║  FLARE: ✅")
+            if shot.get("dutch_angle", 0) > 0:
+                lines.append(f"║  DUTCH ANGLE: {shot['dutch_angle']}°")
             lines.append("║")
             lines.append("║  ANTI-ALUCINACIÓN (shot específico):")
             lines.append(f"║    - Mantener exactamente este encuadre: {shot_type}, {movement}")
