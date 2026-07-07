@@ -1,0 +1,419 @@
+=== PROMPTS DE ESCENA ===
+
+ESCENA 1 (00:00 - 00:06)
+──────────────────────────────────────────────────
+
+PERSONAJES:
+  - Boruto Uzumaki (Flow ref: Boruto Uzumaki): Serio, Plano central
+    Apariencia: Personaje del universo manga reconocible
+  - Sarada Uchiha (Flow ref: Sarada Uchiha): Serio, Plano secundario
+    Apariencia: Personaje del universo manga reconocible
+  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio, Plano secundario
+    Apariencia: Personaje del universo manga reconocible
+  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio, Plano secundario
+    Apariencia: Personaje del universo manga reconocible
+
+ESCENARIO:
+  - Descripción: Vista general del escenario
+  - Hora: day
+
+CÁMARA:
+  - Shot: wide
+  - Movimiento: static
+  - Lente: 35mm f/2.8
+
+ILUMINACIÓN:
+  - Ambiente: day lighting
+  - Mood: Épico
+
+MOOD: Épico
+
+ACCIÓN:
+  - Vista general del escenario
+  - Duración: 6.0 segundos
+
+SPECS TÉCNICAS:
+  - Resolución: 8K (7680x4320)
+  - Estilo: live-action hiperrealista, cinematográfico, fotorrealista
+  - Texturas: extremadamente detalladas, poros de la piel realistas, texturas PBR
+  - Iluminación: volumetric lighting, cinematic lighting, global illumination
+  - Post-procesado: color grading cinematográfico, grain sutil de película analógica, sin CGI, sin renderizado 3D
+  - Motion blur: obturador 180°, movimiento realista natural
+  - Profundidad de campo: acorde al shot, f/1.8 o f/2.8 característico
+
+ANTI-ALUCINACIÓN:
+  - Mantener consistencia total del diseño y rostro de Boruto Uzumaki (ref: Boruto Uzumaki) exactamente como en la referencia de Flow
+  - Mantener consistencia total del diseño y rostro de Sarada Uchiha (ref: Sarada Uchiha) exactamente como en la referencia de Flow
+  - Mantener consistencia total del diseño y rostro de Shikamaru Nara (ref: Shikamaru Nara) exactamente como en la referencia de Flow
+  - Mantener consistencia total del diseño y rostro de Konohamaru Sarutobi (ref: Konohamaru Sarutobi) exactamente como en la referencia de Flow
+  - No alucinar ni añadir objetos, personajes o elementos no descritos
+  - Fondo coherente y consistente con la historia narrada y descripción del escenario
+  - Respetar iluminación y hora del día especificadas
+  - No cambiar expresiones faciales ni poses indicadas
+
+================================================================================
+
+ESCENA 2 (00:06 - 00:15)
+──────────────────────────────────────────────────
+
+PERSONAJES:
+  - Boruto Uzumaki (Flow ref: Boruto Uzumaki): Serio, Plano central
+    Apariencia: Personaje del universo manga reconocible
+  - Sarada Uchiha (Flow ref: Sarada Uchiha): Serio, Plano secundario
+    Apariencia: Personaje del universo manga reconocible
+  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio, Plano secundario
+    Apariencia: Personaje del universo manga reconocible
+  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio, Plano secundario
+    Apariencia: Personaje del universo manga reconocible
+
+ESCENARIO:
+  - Descripción: Acercamiento a Boruto Uzumaki con expresión de épico
+  - Hora: day
+
+CÁMARA:
+  - Shot: medium
+  - Movimiento: dolly
+  - Lente: 35mm f/2.8
+
+ILUMINACIÓN:
+  - Ambiente: day lighting
+  - Mood: Épico
+
+MOOD: Épico
+
+ACCIÓN:
+  - Acercamiento a Boruto Uzumaki con expresión de épico
+  - Duración: 9.0 segundos
+  - Diálogo: [Character] "Confía en mí."
+
+SPECS TÉCNICAS:
+  - Resolución: 8K (7680x4320)
+  - Estilo: live-action hiperrealista, cinematográfico, fotorrealista
+  - Texturas: extremadamente detalladas, poros de la piel realistas, texturas PBR
+  - Iluminación: volumetric lighting, cinematic lighting, global illumination
+  - Post-procesado: color grading cinematográfico, grain sutil de película analógica, sin CGI, sin renderizado 3D
+  - Motion blur: obturador 180°, movimiento realista natural
+  - Profundidad de campo: acorde al shot, f/1.8 o f/2.8 característico
+
+ANTI-ALUCINACIÓN:
+  - Mantener consistencia total del diseño y rostro de Boruto Uzumaki (ref: Boruto Uzumaki) exactamente como en la referencia de Flow
+  - Mantener consistencia total del diseño y rostro de Sarada Uchiha (ref: Sarada Uchiha) exactamente como en la referencia de Flow
+  - Mantener consistencia total del diseño y rostro de Shikamaru Nara (ref: Shikamaru Nara) exactamente como en la referencia de Flow
+  - Mantener consistencia total del diseño y rostro de Konohamaru Sarutobi (ref: Konohamaru Sarutobi) exactamente como en la referencia de Flow
+  - No alucinar ni añadir objetos, personajes o elementos no descritos
+  - Fondo coherente y consistente con la historia narrada y descripción del escenario
+  - Respetar iluminación y hora del día especificadas
+  - No cambiar expresiones faciales ni poses indicadas
+
+================================================================================
+
+ESCENA 3 (00:15 - 00:24)
+──────────────────────────────────────────────────
+
+PERSONAJES:
+  - Boruto Uzumaki (Flow ref: Boruto Uzumaki): Serio, Plano central
+    Apariencia: Personaje del universo manga reconocible
+  - Sarada Uchiha (Flow ref: Sarada Uchiha): Serio, Plano secundario
+    Apariencia: Personaje del universo manga reconocible
+  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio, Plano secundario
+    Apariencia: Personaje del universo manga reconocible
+  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio, Plano secundario
+    Apariencia: Personaje del universo manga reconocible
+
+ESCENARIO:
+  - Descripción: Interacción entre personajes
+  - Hora: day
+
+CÁMARA:
+  - Shot: close-up
+  - Movimiento: pan
+  - Lente: 35mm f/2.8
+
+ILUMINACIÓN:
+  - Ambiente: day lighting
+  - Mood: Épico
+
+MOOD: Épico
+
+ACCIÓN:
+  - Interacción entre personajes
+  - Duración: 9.0 segundos
+  - Diálogo: [Character] "Ya no sé en quién confiar."
+
+SPECS TÉCNICAS:
+  - Resolución: 8K (7680x4320)
+  - Estilo: live-action hiperrealista, cinematográfico, fotorrealista
+  - Texturas: extremadamente detalladas, poros de la piel realistas, texturas PBR
+  - Iluminación: volumetric lighting, cinematic lighting, global illumination
+  - Post-procesado: color grading cinematográfico, grain sutil de película analógica, sin CGI, sin renderizado 3D
+  - Motion blur: obturador 180°, movimiento realista natural
+  - Profundidad de campo: acorde al shot, f/1.8 o f/2.8 característico
+
+ANTI-ALUCINACIÓN:
+  - Mantener consistencia total del diseño y rostro de Boruto Uzumaki (ref: Boruto Uzumaki) exactamente como en la referencia de Flow
+  - Mantener consistencia total del diseño y rostro de Sarada Uchiha (ref: Sarada Uchiha) exactamente como en la referencia de Flow
+  - Mantener consistencia total del diseño y rostro de Shikamaru Nara (ref: Shikamaru Nara) exactamente como en la referencia de Flow
+  - Mantener consistencia total del diseño y rostro de Konohamaru Sarutobi (ref: Konohamaru Sarutobi) exactamente como en la referencia de Flow
+  - No alucinar ni añadir objetos, personajes o elementos no descritos
+  - Fondo coherente y consistente con la historia narrada y descripción del escenario
+  - Respetar iluminación y hora del día especificadas
+  - No cambiar expresiones faciales ni poses indicadas
+
+================================================================================
+
+
+================================================================================
+
+=== PROMPTS DE STORYBOARD ===
+
+ESCENA 1 — Contexto Global (00:00 - 00:06)
+──────────────────────────────────────────────────────────────────────
+
+PERSONAJES:
+  - Boruto Uzumaki (Flow ref: Boruto Uzumaki): Serio
+  - Sarada Uchiha (Flow ref: Sarada Uchiha): Serio
+  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio
+  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio
+
+ESCENARIO:
+  - Descripción: Vista general del escenario
+  - Hora: day
+  - Mood: Épico
+
+SPECS TÉCNICAS:
+  - Resolución: 8K (7680x4320)
+  - Estilo: live-action hiperrealista, cinematográfico, fotorrealista
+  - Texturas: extremadamente detalladas, poros de la piel realistas, texturas PBR
+  - Iluminación: volumetric lighting, cinematic lighting, global illumination
+  - Post-procesado: color grading cinematográfico, grain sutil de película analógica, sin CGI, sin renderizado 3D
+  - Motion blur: obturador 180°, movimiento realista natural
+
+ANTI-ALUCINACIÓN (global):
+  - Mantener consistencia total de Boruto Uzumaki (ref: Boruto Uzumaki) exactamente como en la referencia de Flow
+  - Mantener consistencia total de Sarada Uchiha (ref: Sarada Uchiha) exactamente como en la referencia de Flow
+  - Mantener consistencia total de Shikamaru Nara (ref: Shikamaru Nara) exactamente como en la referencia de Flow
+  - Mantener consistencia total de Konohamaru Sarutobi (ref: Konohamaru Sarutobi) exactamente como en la referencia de Flow
+  - No alucinar ni añadir objetos, personajes o elementos no descritos
+  - Fondo coherente con la descripción del escenario en todos los shots
+  - Respetar iluminación y hora del día especificadas
+
+STORYBOARD:
+
+╔══ SHOT 1 (00:00 → 00:03) ═══════════════════════════════════════
+║  TIPO: Wide
+║  MOV: Slow Dolly
+║  LENTE: 24mm f/4
+║  TRANSICIÓN IN: Cut
+║  TRANSICIÓN OUT: Cut
+║
+║  PERSONAJES EN CUADRO:
+║    - Boruto Uzumaki (ref: Boruto Uzumaki)
+║    - Sarada Uchiha (ref: Sarada Uchiha)
+║    - Shikamaru Nara (ref: Shikamaru Nara)
+║    - Konohamaru Sarutobi (ref: Konohamaru Sarutobi)
+║
+║  ACCIÓN: Wide — construyendo atmósfera (Épico)
+║  FOCO: Enfoque en wide: atmósfera Épico
+║
+║  ANTI-ALUCINACIÓN (shot específico):
+║    - Mantener exactamente este encuadre: Wide, Slow Dolly
+║    - Solo Boruto Uzumaki, Sarada Uchiha, Shikamaru Nara, Konohamaru Sarutobi visible(s) en este shot
+║    - No cambiar expresión de Boruto Uzumaki: Serio
+║    - No cambiar expresión de Sarada Uchiha: Serio
+║    - No cambiar expresión de Shikamaru Nara: Serio
+║    - No cambiar expresión de Konohamaru Sarutobi: Serio
+╚══ FIN SHOT 1 ══════════════════════════════════════════════════
+
+╔══ SHOT 2 (00:03 → 00:06) ═══════════════════════════════════════
+║  TIPO: Slow Push-In
+║  MOV: Slow Dolly
+║  LENTE: 50mm f/2.0
+║  TRANSICIÓN IN: Cut
+║  TRANSICIÓN OUT: Cut
+║
+║  PERSONAJES EN CUADRO:
+║    - Boruto Uzumaki (ref: Boruto Uzumaki)
+║    - Sarada Uchiha (ref: Sarada Uchiha)
+║    - Shikamaru Nara (ref: Shikamaru Nara)
+║    - Konohamaru Sarutobi (ref: Konohamaru Sarutobi)
+║
+║  ACCIÓN: Slow Push-In — construyendo atmósfera (Épico)
+║  FOCO: Enfoque en slow_push-in: atmósfera Épico
+║
+║  ANTI-ALUCINACIÓN (shot específico):
+║    - Mantener exactamente este encuadre: Slow Push-In, Slow Dolly
+║    - Solo Boruto Uzumaki, Sarada Uchiha, Shikamaru Nara, Konohamaru Sarutobi visible(s) en este shot
+║    - No cambiar expresión de Boruto Uzumaki: Serio
+║    - No cambiar expresión de Sarada Uchiha: Serio
+║    - No cambiar expresión de Shikamaru Nara: Serio
+║    - No cambiar expresión de Konohamaru Sarutobi: Serio
+╚══ FIN SHOT 2 ══════════════════════════════════════════════════
+
+
+================================================================================
+
+ESCENA 2 — Contexto Global (00:06 - 00:15)
+──────────────────────────────────────────────────────────────────────
+
+PERSONAJES:
+  - Boruto Uzumaki (Flow ref: Boruto Uzumaki): Serio
+  - Sarada Uchiha (Flow ref: Sarada Uchiha): Serio
+  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio
+  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio
+
+ESCENARIO:
+  - Descripción: Acercamiento a Boruto Uzumaki con expresión de épico
+  - Hora: day
+  - Mood: Épico
+
+DIÁLOGO:
+  - [Character] "Confía en mí."
+
+SPECS TÉCNICAS:
+  - Resolución: 8K (7680x4320)
+  - Estilo: live-action hiperrealista, cinematográfico, fotorrealista
+  - Texturas: extremadamente detalladas, poros de la piel realistas, texturas PBR
+  - Iluminación: volumetric lighting, cinematic lighting, global illumination
+  - Post-procesado: color grading cinematográfico, grain sutil de película analógica, sin CGI, sin renderizado 3D
+  - Motion blur: obturador 180°, movimiento realista natural
+
+ANTI-ALUCINACIÓN (global):
+  - Mantener consistencia total de Boruto Uzumaki (ref: Boruto Uzumaki) exactamente como en la referencia de Flow
+  - Mantener consistencia total de Sarada Uchiha (ref: Sarada Uchiha) exactamente como en la referencia de Flow
+  - Mantener consistencia total de Shikamaru Nara (ref: Shikamaru Nara) exactamente como en la referencia de Flow
+  - Mantener consistencia total de Konohamaru Sarutobi (ref: Konohamaru Sarutobi) exactamente como en la referencia de Flow
+  - No alucinar ni añadir objetos, personajes o elementos no descritos
+  - Fondo coherente con la descripción del escenario en todos los shots
+  - Respetar iluminación y hora del día especificadas
+
+STORYBOARD:
+
+╔══ SHOT 1 (00:00 → 00:04) ═══════════════════════════════════════
+║  TIPO: Medium
+║  MOV: Static
+║  LENTE: 35mm f/2.8
+║  TRANSICIÓN IN: Cut
+║  TRANSICIÓN OUT: Cut
+║
+║  PERSONAJES EN CUADRO:
+║    - Boruto Uzumaki (ref: Boruto Uzumaki)
+║    - Sarada Uchiha (ref: Sarada Uchiha)
+║    - Shikamaru Nara (ref: Shikamaru Nara)
+║    - Konohamaru Sarutobi (ref: Konohamaru Sarutobi)
+║
+║  ACCIÓN: Acercamiento a Boruto Uzumaki con expresión de épico
+║  FOCO: Establecer personaje en entorno
+║
+║  ANTI-ALUCINACIÓN (shot específico):
+║    - Mantener exactamente este encuadre: Medium, Static
+║    - Solo Boruto Uzumaki, Sarada Uchiha, Shikamaru Nara, Konohamaru Sarutobi visible(s) en este shot
+║    - No cambiar expresión de Boruto Uzumaki: Serio
+║    - No cambiar expresión de Sarada Uchiha: Serio
+║    - No cambiar expresión de Shikamaru Nara: Serio
+║    - No cambiar expresión de Konohamaru Sarutobi: Serio
+╚══ FIN SHOT 1 ══════════════════════════════════════════════════
+
+╔══ SHOT 2 (00:04 → 00:09) ═══════════════════════════════════════
+║  TIPO: Close-Up
+║  MOV: Slow Push-In
+║  LENTE: 50mm f/2.0
+║  TRANSICIÓN IN: Cut
+║  TRANSICIÓN OUT: Cut
+║
+║  PERSONAJES EN CUADRO:
+║    - Boruto Uzumaki (ref: Boruto Uzumaki)
+║
+║  ACCIÓN: Close-up de Boruto Uzumaki: Serio
+║  FOCO: Expresión facial de Boruto Uzumaki
+║
+║  ANTI-ALUCINACIÓN (shot específico):
+║    - Mantener exactamente este encuadre: Close-Up, Slow Push-In
+║    - Solo Boruto Uzumaki visible(s) en este shot
+║    - No cambiar expresión de Boruto Uzumaki: Serio
+╚══ FIN SHOT 2 ══════════════════════════════════════════════════
+
+
+================================================================================
+
+ESCENA 3 — Contexto Global (00:15 - 00:24)
+──────────────────────────────────────────────────────────────────────
+
+PERSONAJES:
+  - Boruto Uzumaki (Flow ref: Boruto Uzumaki): Serio
+  - Sarada Uchiha (Flow ref: Sarada Uchiha): Serio
+  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio
+  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio
+
+ESCENARIO:
+  - Descripción: Interacción entre personajes
+  - Hora: day
+  - Mood: Épico
+
+DIÁLOGO:
+  - [Character] "Ya no sé en quién confiar."
+
+SPECS TÉCNICAS:
+  - Resolución: 8K (7680x4320)
+  - Estilo: live-action hiperrealista, cinematográfico, fotorrealista
+  - Texturas: extremadamente detalladas, poros de la piel realistas, texturas PBR
+  - Iluminación: volumetric lighting, cinematic lighting, global illumination
+  - Post-procesado: color grading cinematográfico, grain sutil de película analógica, sin CGI, sin renderizado 3D
+  - Motion blur: obturador 180°, movimiento realista natural
+
+ANTI-ALUCINACIÓN (global):
+  - Mantener consistencia total de Boruto Uzumaki (ref: Boruto Uzumaki) exactamente como en la referencia de Flow
+  - Mantener consistencia total de Sarada Uchiha (ref: Sarada Uchiha) exactamente como en la referencia de Flow
+  - Mantener consistencia total de Shikamaru Nara (ref: Shikamaru Nara) exactamente como en la referencia de Flow
+  - Mantener consistencia total de Konohamaru Sarutobi (ref: Konohamaru Sarutobi) exactamente como en la referencia de Flow
+  - No alucinar ni añadir objetos, personajes o elementos no descritos
+  - Fondo coherente con la descripción del escenario en todos los shots
+  - Respetar iluminación y hora del día especificadas
+
+STORYBOARD:
+
+╔══ SHOT 1 (00:00 → 00:04) ═══════════════════════════════════════
+║  TIPO: Medium
+║  MOV: Static
+║  LENTE: 35mm f/2.8
+║  TRANSICIÓN IN: Cut
+║  TRANSICIÓN OUT: Cut
+║
+║  PERSONAJES EN CUADRO:
+║    - Boruto Uzumaki (ref: Boruto Uzumaki)
+║    - Sarada Uchiha (ref: Sarada Uchiha)
+║    - Shikamaru Nara (ref: Shikamaru Nara)
+║    - Konohamaru Sarutobi (ref: Konohamaru Sarutobi)
+║
+║  ACCIÓN: Interacción entre personajes
+║  FOCO: Establecer personaje en entorno
+║
+║  ANTI-ALUCINACIÓN (shot específico):
+║    - Mantener exactamente este encuadre: Medium, Static
+║    - Solo Boruto Uzumaki, Sarada Uchiha, Shikamaru Nara, Konohamaru Sarutobi visible(s) en este shot
+║    - No cambiar expresión de Boruto Uzumaki: Serio
+║    - No cambiar expresión de Sarada Uchiha: Serio
+║    - No cambiar expresión de Shikamaru Nara: Serio
+║    - No cambiar expresión de Konohamaru Sarutobi: Serio
+╚══ FIN SHOT 1 ══════════════════════════════════════════════════
+
+╔══ SHOT 2 (00:04 → 00:09) ═══════════════════════════════════════
+║  TIPO: Close-Up
+║  MOV: Slow Push-In
+║  LENTE: 50mm f/2.0
+║  TRANSICIÓN IN: Cut
+║  TRANSICIÓN OUT: Cut
+║
+║  PERSONAJES EN CUADRO:
+║    - Boruto Uzumaki (ref: Boruto Uzumaki)
+║
+║  ACCIÓN: Close-up de Boruto Uzumaki: Serio
+║  FOCO: Expresión facial de Boruto Uzumaki
+║
+║  ANTI-ALUCINACIÓN (shot específico):
+║    - Mantener exactamente este encuadre: Close-Up, Slow Push-In
+║    - Solo Boruto Uzumaki visible(s) en este shot
+║    - No cambiar expresión de Boruto Uzumaki: Serio
+╚══ FIN SHOT 2 ══════════════════════════════════════════════════
+
+
+================================================================================

@@ -19,11 +19,12 @@ class DirectorAgent:
     def process_manga_request(self, manga_data: Dict[str, Any]) -> int:
         image = manga_data.get("image", "")
         filename = manga_data.get("filename", "")
+        manga_series = manga_data.get("manga", "")
         character_mapping = manga_data.get("character_mapping", {})
         options = manga_data.get("options", {})
         max_scenes = options.get("max_scenes", 5)
 
-        analysis = self.manga_analyzer.analyze(image, filename)
+        analysis = self.manga_analyzer.analyze(image, filename, manga_series)
         scenes = self.scene_composer.compose(analysis, max_scenes)
         prompts = self.prompt_builder.build_prompts(scenes, character_mapping)
 
@@ -58,7 +59,11 @@ class DirectorAgent:
                         "prompt": prompt["prompt_text"],
                         "scene_number": prompt["scene_number"],
                         "duration": prompt["duration"],
-                        "manga_analysis": analysis
+                        "manga_analysis": analysis,
+                        "characters": scene_data.get("characters", []),
+                        "camera": scene_data.get("camera", {}),
+                        "lighting": scene_data.get("lighting", {}),
+                        "dialogue": scene_data.get("dialogue", []),
                     }
                 )
                 db.add(asset)

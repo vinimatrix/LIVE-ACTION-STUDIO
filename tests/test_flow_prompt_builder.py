@@ -52,6 +52,48 @@ class TestFlowPromptBuilder:
         assert prompts[0]["duration"] == 8.0
 
 
+class TestFlowPromptBuilderFmtTime:
+    def test_fmt_time_zero(self):
+        agent = FlowPromptBuilderAgent()
+        assert agent._fmt_time(0) == "00:00"
+
+    def test_fmt_time_seconds_only(self):
+        agent = FlowPromptBuilderAgent()
+        assert agent._fmt_time(45) == "00:45"
+
+    def test_fmt_time_one_minute(self):
+        agent = FlowPromptBuilderAgent()
+        assert agent._fmt_time(60) == "01:00"
+
+    def test_fmt_time_minutes_and_seconds(self):
+        agent = FlowPromptBuilderAgent()
+        assert agent._fmt_time(125) == "02:05"
+
+    def test_fmt_time_hour_boundary(self):
+        agent = FlowPromptBuilderAgent()
+        assert agent._fmt_time(3600) == "60:00"
+
+    def test_fmt_time_large_value(self):
+        agent = FlowPromptBuilderAgent()
+        assert agent._fmt_time(7384) == "123:04"
+
+    def test_fmt_time_float_seconds(self):
+        agent = FlowPromptBuilderAgent()
+        assert agent._fmt_time(90.7) == "01:30"
+
+    def test_fmt_time_just_under_minute(self):
+        agent = FlowPromptBuilderAgent()
+        assert agent._fmt_time(59) == "00:59"
+
+    def test_fmt_time_exact_59_59(self):
+        agent = FlowPromptBuilderAgent()
+        assert agent._fmt_time(3599) == "59:59"
+
+    def test_fmt_time_negative(self):
+        agent = FlowPromptBuilderAgent()
+        assert agent._fmt_time(-5) == "-1:55"
+
+
 from app.agents.storyboard.storyboard import StoryboardAgent
 
 class TestFlowPromptBuilderStoryboard:

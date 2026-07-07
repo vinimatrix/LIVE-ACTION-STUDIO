@@ -3,3 +3,8 @@ __pycache__/
 *.pyc
 test.db
 *.db
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local

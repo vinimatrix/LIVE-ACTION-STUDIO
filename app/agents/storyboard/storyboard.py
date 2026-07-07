@@ -90,22 +90,26 @@ class StoryboardAgent:
                 "cut", "cut"))
         else:
             shots.append(self._build_shot(scene, 1, "wide", "static", "24mm f/4",
-                0.0, shot_duration, f"Ambos personajes en cuadro: {', '.join(char_names)}",
+                0.0, shot_duration,
+                f"Ambos personajes en cuadro: {', '.join(char_names)}",
                 char_names, "Relación espacial entre personajes",
                 scene.get("transition", "cut"), "cut"))
             shots.append(self._build_shot(scene, 2, "over-the-shoulder", "static", "35mm f/2.8",
-                shot_duration, shot_duration * 2, f"Sobre el hombro de {char_names[0]}: {char_names[1]} reacciona",
+                shot_duration, shot_duration * 2,
+                f"Sobre el hombro de {char_names[0]}: {char_names[1]} reacciona",
                 [char_names[0], char_names[1]], f"Reacción de {char_names[1]}",
                 "cut", "cut"))
             if n_shots >= 3:
                 shots.append(self._build_shot(scene, 3, "over-the-shoulder", "static", "35mm f/2.8",
-                    shot_duration * 2, shot_duration * 3, f"Sobre el hombro de {char_names[1]}: {char_names[0]} responde",
+                    shot_duration * 2, shot_duration * 3,
+                    f"Sobre el hombro de {char_names[1]}: {char_names[0]} responde",
                     [char_names[0], char_names[1]], f"Respuesta de {char_names[0]}",
                     "cut", "cut"))
             if n_shots >= 4:
                 shots.append(self._build_shot(scene, 4, "close-up", "slow push-in", "50mm f/2.0",
-                    shot_duration * 3, duration, f"Clímax: {char_names[0]} confronta a {char_names[1]}",
-                    [char_names[0]], "Momento culminante del diálogo",
+                    shot_duration * 3, duration,
+                    f"Clímax: {char_names[0]} confronta a {char_names[1]}",
+                    [char_names[0], char_names[1]], "Momento culminante del diálogo",
                     "cut", "cut"))
 
         return shots
@@ -147,7 +151,7 @@ class StoryboardAgent:
             shots.append(self._build_shot(scene, i + 1, shot_type, movement, lens,
                 i * shot_duration, (i + 1) * shot_duration,
                 f"{shot_type.replace('_', ' ').title()} — construyendo atmósfera ({mood})",
-                [c["name"] for c in characters] if i == 0 else [],
+                [c["name"] for c in characters],
                 f"Enfoque en {shot_type}: atmósfera {mood}",
                 "cut" if i > 0 else scene.get("transition", "cut"), "cut"))
         return shots

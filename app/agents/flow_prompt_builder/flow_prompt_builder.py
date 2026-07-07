@@ -157,6 +157,12 @@ class FlowPromptBuilderAgent:
         lines.append(f"  - Hora: {lighting.get('time_of_day', 'day')}")
         lines.append(f"  - Mood: {lighting.get('mood_lighting', 'neutral')}")
         lines.append("")
+        dialogue = scene.get("dialogue", [])
+        if dialogue:
+            lines.append("DIÁLOGO:")
+            for d in dialogue:
+                lines.append(f"  - [{d.get('character', '?')}] \"{d.get('text', '')}\"")
+            lines.append("")
         lines.append("SPECS TÉCNICAS:")
         lines.append("  - Resolución: 8K (7680x4320)")
         lines.append("  - Estilo: live-action hiperrealista, cinematográfico, fotorrealista")

@@ -129,3 +129,86 @@ class TestStoryboardAgent:
         shots = agent.break_down_scene(scene)
         shot_types = [s["shot_type"] for s in shots]
         assert "over-the-shoulder" in shot_types
+
+
+class TestStoryboardInternalMethods:
+    def test_is_action_scene_returns_true_for_known_moods(self):
+        agent = StoryboardAgent()
+        assert agent._is_action_scene("intense") is True
+        assert agent._is_action_scene("epic") is True
+        assert agent._is_action_scene("dramatic") is True
+        assert agent._is_action_scene("explosive") is True
+
+    def test_is_action_scene_returns_false_for_unknown_moods(self):
+        agent = StoryboardAgent()
+        assert agent._is_action_scene("tense") is False
+        assert agent._is_action_scene("calm") is False
+        assert agent._is_action_scene("neutral") is False
+        assert agent._is_action_scene("sad") is False
+        assert agent._is_action_scene("peaceful") is False
+
+    def test_is_action_scene_empty_string(self):
+        agent = StoryboardAgent()
+        assert agent._is_action_scene("") is False
+
+    def test_build_dialogue_one_returns_two_shots(self):
+        agent = StoryboardAgent()
+        scene = {
+            "duration": 8.0,
+            "characters": [
+                {"name": "Goku", "appearance": "orange gi", "expression": "angry", "position": "center"}
+            ],
+            "description": "Goku speaks",
+            "camera": {"shot_type": "medium", "movement": "static", "lens": "35mm f/2.8"},
+            "lighting": {"time_of_day": "day", "mood_lighting": "neutral"},
+            "dialogue": [{"character": "Goku", "text": "I will defeat you!"}],
+            "transition": "cut"
+        }
+        shots = agent._build_dialogue_one(scene)
+        assert len(shots) == 2
+
+    def test_build_dialogue_one_first_shot_medium(self):
+        agent = StoryboardAgent()
+        scene = {
+            "duration": 8.0,
+            "characters": [{"name": "Goku", "expression": "angry"}],
+            "description": "Goku speaks",
+            "dialogue": [{"character": "Goku", "text": "I will defeat you!"}],
+        }
+        shots = agent._build_dialogue_one(scene)
+        assert shots[0]["shot_type"] == "medium"
+
+    def test_build_dialogue_one_second_shot_close_up(self):
+        agent = StoryboardAgent()
+        scene = {
+            "duration": 8.0,
+            "characters": [{"name": "Goku", "expression": "angry"}],
+            "description": "Goku speaks",
+            "dialogue": [{"character": "Goku", "text": "I will defeat you!"}],
+        }
+        shots = agent._build_dialogue_one(scene)
+        assert shots[1]["shot_type"] == "close-up"
+
+    def test_build_dialogue_one_times_are_continuous(self):
+        agent = StoryboardAgent()
+        scene = {
+            "duration": 8.0,
+            "characters": [{"name": "Goku", "expression": "angry"}],
+            "description": "Goku speaks",
+            "dialogue": [{"character": "Goku", "text": "I will defeat you!"}],
+        }
+        shots = agent._build_dialogue_one(scene)
+        assert shots[0]["start_time"] == 0.0
+        assert shots[0]["end_time"] == shots[1]["start_time"]
+        assert shots[1]["end_time"] == 8.0
+
+    def test_build_dialogue_one_second_shot_has_character_name(self):
+        agent = StoryboardAgent()
+        scene = {
+            "duration": 8.0,
+            "characters": [{"name": "Goku", "expression": "angry"}],
+            "description": "Goku speaks",
+            "dialogue": [{"character": "Goku", "text": "I will defeat you!"}],
+        }
+        shots = agent._build_dialogue_one(scene)
+        assert "Goku" in shots[1]["description"]

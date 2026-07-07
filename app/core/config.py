@@ -23,6 +23,11 @@ class Settings(BaseSettings):
     # ComfyUI
     COMFYUI_URL: str = "http://127.0.0.1:8188"
 
-    model_config = SettingsConfigDict(case_sensitive=True)
+    # Cloud AI
+    GEMINI_API_KEY: str = ""
+    MANGA_ANALYZER_BACKEND: str = "ollama"  # "ollama" | "gemini"
+    GEMINI_VISION_MODEL: str = "gemini-2.5-flash"
+
+    model_config = SettingsConfigDict(case_sensitive=True, env_file=".env")
 
 settings = Settings()

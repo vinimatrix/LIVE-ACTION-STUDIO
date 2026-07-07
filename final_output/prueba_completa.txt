@@ -1,0 +1,107 @@
+=== PROMPTS DE ESCENA ===
+
+ESCENA 1 (00:00 - 00:08)
+──────────────────────────────────────────────────
+
+PERSONAJES:
+
+ESCENARIO:
+  - Descripción: 
+  - Hora: day
+
+CÁMARA:
+  - Shot: wide
+  - Movimiento: static
+  - Lente: 35mm f/2.8
+
+ILUMINACIÓN:
+  - Ambiente: day lighting
+  - Mood: 
+
+MOOD: 
+
+ACCIÓN:
+  - 
+  - Duración: 8.0 segundos
+
+SPECS TÉCNICAS:
+  - Resolución: 8K (7680x4320)
+  - Estilo: live-action hiperrealista, cinematográfico, fotorrealista
+  - Texturas: extremadamente detalladas, poros de la piel realistas, texturas PBR
+  - Iluminación: volumetric lighting, cinematic lighting, global illumination
+  - Post-procesado: color grading cinematográfico, grain sutil de película analógica, sin CGI, sin renderizado 3D
+  - Motion blur: obturador 180°, movimiento realista natural
+  - Profundidad de campo: acorde al shot, f/1.8 o f/2.8 característico
+
+ANTI-ALUCINACIÓN:
+  - No alucinar ni añadir objetos, personajes o elementos no descritos
+  - Fondo coherente y consistente con la historia narrada y descripción del escenario
+  - Respetar iluminación y hora del día especificadas
+  - No cambiar expresiones faciales ni poses indicadas
+
+================================================================================
+
+
+================================================================================
+
+=== PROMPTS DE STORYBOARD ===
+
+ESCENA 1 — Contexto Global (00:00 - 00:08)
+──────────────────────────────────────────────────────────────────────
+
+PERSONAJES:
+
+ESCENARIO:
+  - Descripción: 
+  - Hora: day
+  - Mood: neutral
+
+SPECS TÉCNICAS:
+  - Resolución: 8K (7680x4320)
+  - Estilo: live-action hiperrealista, cinematográfico, fotorrealista
+  - Texturas: extremadamente detalladas, poros de la piel realistas, texturas PBR
+  - Iluminación: volumetric lighting, cinematic lighting, global illumination
+  - Post-procesado: color grading cinematográfico, grain sutil de película analógica, sin CGI, sin renderizado 3D
+  - Motion blur: obturador 180°, movimiento realista natural
+
+ANTI-ALUCINACIÓN (global):
+  - No alucinar ni añadir objetos, personajes o elementos no descritos
+  - Fondo coherente con la descripción del escenario en todos los shots
+  - Respetar iluminación y hora del día especificadas
+
+STORYBOARD:
+
+╔══ SHOT 1 (00:00 → 00:04) ═══════════════════════════════════════
+║  TIPO: Wide
+║  MOV: Slow Dolly
+║  LENTE: 24mm f/4
+║  TRANSICIÓN IN: Cut
+║  TRANSICIÓN OUT: Cut
+║
+║  PERSONAJES EN CUADRO:
+║
+║  ACCIÓN: Wide — construyendo atmósfera (neutral)
+║  FOCO: Enfoque en wide: atmósfera neutral
+║
+║  ANTI-ALUCINACIÓN (shot específico):
+║    - Mantener exactamente este encuadre: Wide, Slow Dolly
+╚══ FIN SHOT 1 ══════════════════════════════════════════════════
+
+╔══ SHOT 2 (00:04 → 00:08) ═══════════════════════════════════════
+║  TIPO: Slow Push-In
+║  MOV: Slow Dolly
+║  LENTE: 50mm f/2.0
+║  TRANSICIÓN IN: Cut
+║  TRANSICIÓN OUT: Cut
+║
+║  PERSONAJES EN CUADRO:
+║
+║  ACCIÓN: Slow Push-In — construyendo atmósfera (neutral)
+║  FOCO: Enfoque en slow_push-in: atmósfera neutral
+║
+║  ANTI-ALUCINACIÓN (shot específico):
+║    - Mantener exactamente este encuadre: Slow Push-In, Slow Dolly
+╚══ FIN SHOT 2 ══════════════════════════════════════════════════
+
+
+================================================================================

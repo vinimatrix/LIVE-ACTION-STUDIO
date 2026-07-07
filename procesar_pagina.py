@@ -26,6 +26,12 @@ def parse_arguments():
         help="Ruta al archivo de imagen de la página de manga (JPG, PNG)."
     )
     parser.add_argument(
+        "--manga",
+        type=str,
+        default="",
+        help="Nombre del manga (ej: boruto, naruto) para mejorar el análisis cuando la API de visión falla."
+    )
+    parser.add_argument(
         "--char_map", 
         type=str, 
         default="{}", 
@@ -83,6 +89,7 @@ def main():
     # Construir petición
     manga_request = {
         "filename": filename,
+        "manga": args.manga,
         "image": image_base64,
         "character_mapping": character_mapping,
         "options": {

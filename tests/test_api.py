@@ -54,7 +54,7 @@ def client():
 def test_root_endpoint(client, test_db):
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"message": "AI Live Action Studio MVP"}
+    assert "AI Live Action Studio" in response.text
 
 
 def test_health_endpoint(client, test_db):
@@ -80,3 +80,27 @@ def test_process_manga_endpoint(mock_director, client, test_db):
 def test_get_job_status_not_found(client, test_db):
     response = client.get("/api/v1/jobs/status/99999")
     assert response.status_code == 404
+
+
+@patch("app.api.v1.endpoints.manga.FlowPromptBuilderAgent")
+@patch("app.api.v1.endpoints.manga._get_session")
+@patch("app.api.v1.endpoints.manga.DirectorAgent")
+def test_upload_endpoint(mock_director, mock_session, mock_flow, client, test_db):
+    from unittest.mock import MagicMock
+    mock_job = MagicMock()
+    mock_job.id = 42
+    mock_job.manga_filename = "test.png"
+    mock_job.status = "completed"
+    mock_db = MagicMock()
+    mock_db.query.return_value.filter.return_value.order_by.return_value.all.return_value = []
+    mock_db.query.return_value.filter.return_value.all.return_value = []
+    mock_db.query.return_value.filter.return_value.first.return_value = mock_job
+    mock_session.return_value = mock_db
+    mock_director.return_value.process_manga_request.return_value = 42
+
+    png = b"\x89PNG\r\n\x1a\n" + b"\x00" * 100
+    response = client.post("/api/v1/manga/upload", files={"file": ("test.png", png, "image/png")})
+    assert response.status_code == 200
+    data = response.json()
+    assert data["job_id"] == 42
+    assert data["filename"] == "test.png"

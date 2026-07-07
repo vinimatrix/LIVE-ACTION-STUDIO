@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Live Action Studio</title>
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #e0e0e0;
+    --text-dim: #888;
+    --accent: #7c3aed;
+    --accent-hover: #8b5cf6;
+    --green: #22c55e;
+    --red: #ef4444;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  header h1 { font-size: 1.25rem; font-weight: 600; }
+  header span { color: var(--accent); }
+  header .badge {
+    font-size: 0.65rem;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+  }
+  main { max-width: 1000px; margin: 2rem auto; padding: 0 1.5rem; }
+
+  .drop-zone {
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+    position: relative;
+  }
+  .drop-zone:hover, .drop-zone.dragover {
+    border-color: var(--accent);
+    background: rgba(124,58,237,0.05);
+  }
+  .drop-zone.has-file { border-style: solid; border-color: var(--green); }
+  .drop-zone .icon { font-size: 3rem; margin-bottom: 0.75rem; }
+  .drop-zone p { color: var(--text-dim); font-size: 0.9rem; }
+  .drop-zone .filename {
+    margin-top: 0.75rem;
+    font-weight: 600;
+    color: var(--green);
+  }
+  .drop-zone input[type=file] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .actions { margin-top: 1.5rem; text-align: center; }
+
+  .spinner {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding: 2rem;
+    color: var(--text-dim);
+  }
+  .spinner.active { display: flex; }
+  .spinner .ring {
+    width: 28px; height: 28px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(239,68,68,0.1);
+    border: 1px solid var(--red);
+    border-radius: 8px;
+    color: var(--red);
+    font-size: 0.85rem;
+  }
+  .error.active { display: block; }
+
+  .results { display: none; margin-top: 2rem; }
+  .results.active { display: block; }
+
+  .tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+  }
+  .tab {
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    color: var(--text-dim);
+    font-weight: 500;
+    font-size: 0.85rem;
+    border-bottom: 2px solid transparent;
+    transition: 0.2s;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .scene-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  .scene-card-header {
+    padding: 0.75rem 1rem;
+    background: rgba(124,58,237,0.08);
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .scene-card-body {
+    padding: 1rem;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    color: var(--text-dim);
+  }
+
+  .shot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .shot-card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem;
+  }
+  .shot-card .label { color: var(--text-dim); font-size: 0.7rem; }
+  .shot-card .value { color: var(--text); font-weight: 500; font-size: 0.8rem; }
+
+  .job-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: var(--surface);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    font-size: 0.82rem;
+  }
+  .job-meta .label { color: var(--text-dim); }
+  .job-meta .value { color: var(--green); font-weight: 600; }
+</style>
+</head>
+<body>
+<header>
+  <h1><span>AI</span> Live Action Studio</h1>
+  <span class="badge">MVP</span>
+</header>
+<main>
+  <div class="drop-zone" id="dropZone">
+    <div class="icon">🎴</div>
+    <p>Arrastra una página de manga aquí o haz clic para seleccionar</p>
+    <p style="font-size:0.75rem;margin-top:0.3rem">JPG • PNG</p>
+    <div class="filename" id="fileName"></div>
+    <input type="file" id="fileInput" accept="image/jpeg,image/png">
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary" id="processBtn" disabled>Procesar página</button>
+  </div>
+
+  <div class="spinner" id="spinner">
+    <div class="ring"></div>
+    <span>Analizando con Gemini Vision...</span>
+  </div>
+
+  <div class="error" id="error"></div>
+
+  <div class="results" id="results">
+    <div class="job-meta">
+      <div><span class="label">Archivo:</span> <span class="value" id="metaFile">—</span></div>
+      <div><span class="label">Estado:</span> <span class="value" id="metaStatus">—</span></div>
+      <div><span class="label">Job ID:</span> <span class="value" id="metaJobId">—</span></div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="scene">Prompts de Escena</div>
+      <div class="tab" data-tab="storyboard">Storyboard</div>
+    </div>
+
+    <div class="tab-content active" id="tabScene"></div>
+    <div class="tab-content" id="tabStoryboard"></div>
+  </div>
+</main>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const fileName = document.getElementById('fileName');
+const processBtn = document.getElementById('processBtn');
+const spinner = document.getElementById('spinner');
+const error = document.getElementById('error');
+const results = document.getElementById('results');
+const metaFile = document.getElementById('metaFile');
+const metaStatus = document.getElementById('metaStatus');
+const metaJobId = document.getElementById('metaJobId');
+const tabScene = document.getElementById('tabScene');
+const tabStoryboard = document.getElementById('tabStoryboard');
+
+let selectedFile = null;
+
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('dragover'); setFile(e.dataTransfer.files[0]); });
+fileInput.addEventListener('change', () => setFile(fileInput.files[0]));
+
+function setFile(f) {
+  if (!f || !['image/jpeg','image/png'].includes(f.type)) {
+    showError('Solo JPG y PNG');
+    return;
+  }
+  selectedFile = f;
+  fileName.textContent = f.name;
+  dropZone.classList.add('has-file');
+  processBtn.disabled = false;
+  hideError();
+}
+
+processBtn.addEventListener('click', async () => {
+  if (!selectedFile) return;
+  processBtn.disabled = true;
+  spinner.classList.add('active');
+  results.classList.remove('active');
+  hideError();
+
+  const form = new FormData();
+  form.append('file', selectedFile);
+  form.append('character_map', '{}');
+
+  try {
+    const res = await fetch('/api/v1/manga/upload', { method: 'POST', body: form });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.detail || `HTTP ${res.status}`);
+    }
+    const data = await res.json();
+    showResults(data);
+  } catch (e) {
+    showError(e.message);
+  } finally {
+    spinner.classList.remove('active');
+    processBtn.disabled = false;
+  }
+});
+
+function showResults(data) {
+  metaFile.textContent = data.filename;
+  metaStatus.textContent = data.status;
+  metaJobId.textContent = data.job_id;
+
+  tabScene.innerHTML = data.scene_prompts.map(sp => `
+    <div class="scene-card">
+      <div class="scene-card-header">Escena ${sp.scene_number}</div>
+      <div class="scene-card-body">${escapeHtml(sp.prompt_text)}</div>
+    </div>
+  `).join('');
+
+  tabStoryboard.innerHTML = data.storyboard_prompts.map(sp => `
+    <div class="scene-card">
+      <div class="scene-card-header">Storyboard — Escena ${sp.scene_number}</div>
+      <div class="scene-card-body">${escapeHtml(sp.prompt_text)}</div>
+    </div>
+  `).join('');
+
+  results.classList.add('active');
+}
+
+function showError(msg) {
+  error.textContent = msg;
+  error.classList.add('active');
+}
+function hideError() {
+  error.classList.remove('active');
+  error.textContent = '';
+}
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab === 'scene' ? 'tabScene' : 'tabStoryboard').classList.add('active');
+  });
+});
+
+function escapeHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+</script>
+</body>
+</html>

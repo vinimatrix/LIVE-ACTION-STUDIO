@@ -85,6 +85,4 @@ STYLE_MOOD_MAP = {
 def resolve_style(director_style=None, mood="neutral"):
     if director_style and director_style in DIRECTOR_STYLES:
         return director_style
-    if director_style and director_style not in DIRECTOR_STYLES:
-        return STYLE_MOOD_MAP.get(mood, None)
     return STYLE_MOOD_MAP.get(mood, None)
