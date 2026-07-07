@@ -41,7 +41,7 @@ class SceneComposerAgent:
     def __init__(self):
         self.max_duration = 10.0
 
-    def compose(self, manga_analysis: Dict[str, Any], max_scenes: int = 5) -> List[Dict[str, Any]]:
+    def compose(self, manga_analysis: Dict[str, Any], max_scenes: int = 5, director_style: str = None) -> List[Dict[str, Any]]:
         characters = manga_analysis.get("characters", [])
         setting = manga_analysis.get("setting", "Unknown setting")
         action = manga_analysis.get("action", "")
@@ -50,7 +50,9 @@ class SceneComposerAgent:
         panels = manga_analysis.get("panels", [])
 
         if not dialogue and not action and not panels:
-            return [self._build_scene(1, characters, setting, action, [], mood, "wide", "static")]
+            sc = self._build_scene(1, characters, setting, action, [], mood, "wide", "static")
+            sc["director_style"] = director_style
+            return [sc]
 
         raw_scenes = []
         if panels and len(panels) > 1:
@@ -59,11 +61,13 @@ class SceneComposerAgent:
                 start = (i * len(dialogue)) // len(panels)
                 end = ((i + 1) * len(dialogue)) // len(panels)
                 panel_dialogue = dialogue[start:end]
-                raw_scenes.append(self._build_scene(
+                sc = self._build_scene(
                     i + 1, characters, setting, desc, panel_dialogue, mood,
                     self._select_shot(i, len(panels)),
                     self._select_movement(i),
-                ))
+                )
+                sc["director_style"] = director_style
+                raw_scenes.append(sc)
         elif dialogue:
             for i, line in enumerate(dialogue):
                 speaker = line["character"] if isinstance(line, dict) else (
@@ -71,17 +75,21 @@ class SceneComposerAgent:
                 )
                 text = line.get("text", line) if isinstance(line, dict) else line
                 desc = f"{action} - {speaker}" if action else f"{speaker} habla"
-                raw_scenes.append(self._build_scene(
+                sc = self._build_scene(
                     i + 1, characters, setting, desc,
                     [{"character": speaker, "text": text}],
                     mood,
                     self._select_shot(i, len(dialogue)),
                     self._select_movement(i),
-                ))
+                )
+                sc["director_style"] = director_style
+                raw_scenes.append(sc)
         else:
-            raw_scenes.append(self._build_scene(
+            sc = self._build_scene(
                 1, characters, setting, action, [], mood, "wide", "static"
-            ))
+            )
+            sc["director_style"] = director_style
+            raw_scenes.append(sc)
 
         for sc in raw_scenes:
             sc["duration"] = _estimate_duration(
@@ -134,9 +142,11 @@ class SceneComposerAgent:
         }
 
     def _select_shot(self, index, total):
-        shots = ["wide", "medium", "close-up", "over-the-shoulder", "extreme-close-up"]
+        shots = ["wide", "medium", "close-up", "over-the-shoulder", "extreme-close-up",
+                 "low_angle", "high_angle", "birds_eye", "point_of_view"]
         return shots[index % len(shots)]
 
     def _select_movement(self, index):
-        movements = ["static", "dolly", "pan", "tilt", "steadicam"]
+        movements = ["static", "dolly", "pan", "tilt", "steadicam", "handheld",
+                     "360_orbit", "crane_up", "crane_down", "drone_sweep", "whip_pan"]
         return movements[index % len(movements)]

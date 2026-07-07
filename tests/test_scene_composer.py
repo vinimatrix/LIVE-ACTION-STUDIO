@@ -198,17 +198,18 @@ class TestSceneComposerSelectors:
         assert shots[2] == "close-up"
         assert shots[3] == "over-the-shoulder"
         assert shots[4] == "extreme-close-up"
-        assert shots[5] == "wide"
+        assert shots[5] == "low_angle"
 
     def test_select_movement_cycles_through_options(self):
         agent = SceneComposerAgent()
-        moves = [agent._select_movement(i) for i in range(10)]
+        moves = [agent._select_movement(i) for i in range(12)]
         assert moves[0] == "static"
         assert moves[1] == "dolly"
         assert moves[2] == "pan"
         assert moves[3] == "tilt"
         assert moves[4] == "steadicam"
-        assert moves[5] == "static"
+        assert moves[5] == "handheld"
+        assert moves[11] == "static"
 
     def test_build_scene_has_all_required_keys(self):
         agent = SceneComposerAgent()
@@ -249,3 +250,22 @@ class TestSceneComposerSelectors:
         agent = SceneComposerAgent()
         scene = agent._build_scene(2, [], "Forest", "", [], "neutral", "wide", "static")
         assert scene["transition"] == "cut"
+
+    def test_select_shot_includes_new_types(self):
+        agent = SceneComposerAgent()
+        new_shots = {"low_angle", "high_angle", "birds_eye", "point_of_view"}
+        all_returned = {agent._select_shot(i, 20) for i in range(20)}
+        assert new_shots.issubset(all_returned)
+
+    def test_select_movement_includes_new_types(self):
+        agent = SceneComposerAgent()
+        new_moves = {"handheld", "360_orbit", "crane_up", "crane_down", "drone_sweep", "whip_pan"}
+        all_returned = {agent._select_movement(i) for i in range(30)}
+        assert new_moves.issubset(all_returned)
+
+    def test_compose_accepts_director_style(self):
+        agent = SceneComposerAgent()
+        from tests.test_scene_composer import TestSceneComposer
+        scenes = agent.compose(TestSceneComposer.SAMPLE_ANALYSIS, max_scenes=1, director_style="michael_bay")
+        assert isinstance(scenes, list)
+        assert len(scenes) > 0
