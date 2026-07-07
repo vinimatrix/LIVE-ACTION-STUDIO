@@ -23,10 +23,11 @@ class DirectorAgent:
         character_mapping = manga_data.get("character_mapping", {})
         options = manga_data.get("options", {})
         max_scenes = options.get("max_scenes", 5)
+        director_style = options.get("director_style")
 
         analysis = self.manga_analyzer.analyze(image, filename, manga_series)
-        scenes = self.scene_composer.compose(analysis, max_scenes)
-        prompts = self.prompt_builder.build_prompts(scenes, character_mapping)
+        scenes = self.scene_composer.compose(analysis, max_scenes, director_style=director_style)
+        prompts = self.prompt_builder.build_prompts(scenes, character_mapping, director_style=director_style)
 
         db = self._db_session()
         try:

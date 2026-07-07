@@ -35,6 +35,44 @@ def db_session():
 
 
 class TestDirectorAgent:
+    def test_process_manga_request_passes_director_style(self, db_session, mocker):
+        agent = DirectorAgent(db_session=db_session)
+
+        mock_analyze = mocker.patch.object(agent, 'manga_analyzer')
+        mock_analyze.analyze.return_value = {
+            "characters": [], "setting": "test", "action": "",
+            "dialogue": [], "mood": ""
+        }
+
+        mock_compose = mocker.patch.object(agent, 'scene_composer')
+        mock_compose.compose.return_value = [{
+            "scene_id": 1, "duration": 8.0, "characters": [],
+            "description": "test", "camera": {}, "lighting": {},
+            "dialogue": [], "transition": "cut"
+        }]
+
+        mock_prompt = mocker.patch.object(agent, 'prompt_builder')
+        mock_prompt.build_prompts.return_value = [{
+            "scene_id": 1, "scene_number": 1, "duration": 8.0,
+            "prompt_text": "test prompt"
+        }]
+
+        agent.process_manga_request({
+            "image": "fake_base64",
+            "filename": "test.png",
+            "character_mapping": {"Goku": "personaje_1"},
+            "options": {"director_style": "michael_bay"}
+        })
+
+        mock_compose.compose.assert_called_once()
+        _, kwargs = mock_compose.compose.call_args
+        assert kwargs.get("director_style") == "michael_bay"
+
+        mock_prompt.build_prompts.assert_called_once()
+        _, kwargs = mock_prompt.build_prompts.call_args
+        assert kwargs.get("director_style") == "michael_bay"
+
+
     def test_director_initialization(self, db_session):
         agent = DirectorAgent(db_session=db_session)
         assert agent is not None
