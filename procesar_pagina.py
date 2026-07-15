@@ -46,7 +46,7 @@ def parse_arguments():
     parser.add_argument(
         "--output", 
         type=str, 
-        default="final_output/prompts_generados.txt", 
+        default="final_output/prompts_generados.md", 
         help="Archivo donde se guardarán los prompts estructurados generados."
     )
     return parser.parse_args()

@@ -9,6 +9,6 @@ sys.argv = [
     "--image", r"C:\Users\vm004458\Downloads\p1.jpg",
     "--char_map", json.dumps({"Boruto": "boruto_tbv", "Kawaki": "kawaki_tbv"}),
     "--max_scenes", "3",
-    "--output", "final_output/p1_prompts.txt"
+    "--output", "final_output/p1_prompts.md"
 ]
 main()

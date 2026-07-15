@@ -443,7 +443,7 @@ db.commit()
 
 # Guardar prompts generados en un archivo de texto
 os.makedirs("final_output", exist_ok=True)
-prompts_file_path = os.path.join("final_output", "prompts_generados.txt")
+prompts_file_path = os.path.join("final_output", "prompts_generados.md")
 with open(prompts_file_path, "w", encoding="utf-8") as pf:
     pf.write("\n".join(all_prompts_log))
 
