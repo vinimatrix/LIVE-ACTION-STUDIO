@@ -11,3 +11,4 @@ test.db
 
 *.bak
 vm004458/
+generated_*/
