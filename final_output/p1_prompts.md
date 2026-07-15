@@ -4,15 +4,15 @@ ESCENA 1 (00:00 - 00:10)
 ──────────────────────────────────────────────────
 
 PERSONAJES:
-  - Sarada Uchiha (Flow ref: Sarada Uchiha): Frustrada y enojada, con la boca abierta en un grito o exclamación, ojos muy abiertos y cejas fruncidas., En el panel superior, de frente, ligeramente inclinada hacia adelante, como si estuviera discutiendo acaloradamente.
+  - Sarada Uchiha (Flow ref: Sarada Uchiha): Frustrada y enojada, con la boca abierta en un grito o exclamación, ojos muy abiertos y cejas fruncidas., , de frente, ligeramente inclinada hacia adelante, como si estuviera discutiendo acaloradamente.
     Apariencia: Mujer joven con cabello oscuro corto, gafas redondas, aretes. Viste una chaqueta oscura con cuello y puños claros sobre una camiseta de rayas horizontales. Lleva un emblema en el brazo izquierdo.
-  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio, con una mirada de resignación o firmeza, cejas ligeramente fruncidas y boca en una línea recta., En el panel inferior, a la derecha, de pie y apoyado casualmente contra una pared o marco de puerta, mirando hacia la izquierda.
+  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio, con una mirada de resignación o firmeza, cejas ligeramente fruncidas y boca en una línea recta., , a la derecha, de pie y apoyado casualmente contra una pared o marco de puerta, mirando hacia la izquierda.
     Apariencia: Hombre adulto con cabello oscuro y puntiagudo recogido en una cola de caballo alta, barba de chivo. Viste una túnica o capa clara de cuello alto sobre un atuendo oscuro. Su brazo derecho está doblado, apoyado en algo.
-  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio y determinado, con una mirada fija y penetrante., En el panel inferior, a la izquierda, de pie y mirando hacia Shikamaru. El recuadro con sus ojos está en el extremo izquierdo, superpuesto al panel principal.
+  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio y determinado, con una mirada fija y penetrante., , a la izquierda, de pie y mirando hacia Shikamaru. El recuadro con sus ojos está en el extremo izquierdo, superpuesto al panel principal.
     Apariencia: Hombre joven con cabello oscuro y puntiagudo. Viste una bufanda clara y una chaqueta o túnica clara sobre un atuendo oscuro. En un pequeño recuadro, se muestran solo sus ojos intensos y parte de su cabello.
 
 ESCENARIO:
-  - Descripción: En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Boruto) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 1
+  - Descripción: , Sarada está en medio de una discusión acalorada, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 1
   - Hora: day
 
 CÁMARA:
@@ -27,7 +27,7 @@ ILUMINACIÓN:
 MOOD: La atmósfera general es de tensión y seriedad. el panel superior irradia frustración y exasperación, mientras que el panel inferior transmite una sensación de resolución inquebrantable y juicio severo, con un tono sombrío y definitivo respecto a un conflicto pasado y sus consecuencias.
 
 ACCIÓN:
-  - En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Boruto) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 1
+  - , Sarada está en medio de una discusión acalorada golpea la el escritorio con ambas manos abiertas, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 1
   - Duración: 10.0 segundos
   - Diálogo: [Character] "{'speaker': 'Sarada Uchiha', 'text': '¿Por qué no me entienden!?'}"
 
@@ -55,15 +55,15 @@ ESCENA 2 (00:10 - 00:20)
 ──────────────────────────────────────────────────
 
 PERSONAJES:
-  - Sarada Uchiha (Flow ref: Sarada Uchiha): Frustrada y enojada, con la boca abierta en un grito o exclamación, ojos muy abiertos y cejas fruncidas., En el panel superior, de frente, ligeramente inclinada hacia adelante, como si estuviera discutiendo acaloradamente.
+  - Sarada Uchiha (Flow ref: Sarada Uchiha): Frustrada y enojada, con la boca abierta en un grito o exclamación, ojos muy abiertos y cejas fruncidas., , de frente, ligeramente inclinada hacia adelante, como si estuviera discutiendo acaloradamente.
     Apariencia: Mujer joven con cabello oscuro corto, gafas redondas, aretes. Viste una chaqueta oscura con cuello y puños claros sobre una camiseta de rayas horizontales. Lleva un emblema en el brazo izquierdo.
-  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio, con una mirada de resignación o firmeza, cejas ligeramente fruncidas y boca en una línea recta., En el panel inferior, a la derecha, de pie y apoyado casualmente contra una pared o marco de puerta, mirando hacia la izquierda.
+  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio, con una mirada de resignación o firmeza, cejas ligeramente fruncidas y boca en una línea recta., , a la derecha, de pie y apoyado casualmente contra una pared o marco de puerta, mirando hacia la izquierda.
     Apariencia: Hombre adulto con cabello oscuro y puntiagudo recogido en una cola de caballo alta, barba de chivo. Viste una túnica o capa clara de cuello alto sobre un atuendo oscuro. Su brazo derecho está doblado, apoyado en algo.
-  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio y determinado, con una mirada fija y penetrante., En el panel inferior, a la izquierda, de pie y mirando hacia Shikamaru. El recuadro con sus ojos está en el extremo izquierdo, superpuesto al panel principal.
+  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio y determinado, con una mirada fija y penetrante., , a la izquierda, de pie y mirando hacia Shikamaru. El recuadro con sus ojos está en el extremo izquierdo, superpuesto al panel principal.
     Apariencia: Hombre joven con cabello oscuro y puntiagudo. Viste una bufanda clara y una chaqueta o túnica clara sobre un atuendo oscuro. En un pequeño recuadro, se muestran solo sus ojos intensos y parte de su cabello.
 
 ESCENARIO:
-  - Descripción: En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Boruto) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 2
+  - Descripción: , Sarada está en medio de una discusión acalorada, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 2
   - Hora: day
 
 CÁMARA:
@@ -78,7 +78,7 @@ ILUMINACIÓN:
 MOOD: La atmósfera general es de tensión y seriedad. el panel superior irradia frustración y exasperación, mientras que el panel inferior transmite una sensación de resolución inquebrantable y juicio severo, con un tono sombrío y definitivo respecto a un conflicto pasado y sus consecuencias.
 
 ACCIÓN:
-  - En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Boruto) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 2
+  - , Sarada está en medio de una discusión acalorada, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 2
   - Duración: 10.0 segundos
   - Diálogo: [Character] "{'speaker': 'Sarada Uchiha', 'text': '¡Ya se los he explicado un millón de veces!'}"
 
@@ -108,15 +108,15 @@ ESCENA 3 (00:20 - 00:30)
 ──────────────────────────────────────────────────
 
 PERSONAJES:
-  - Sarada Uchiha (Flow ref: Sarada Uchiha): Frustrada y enojada, con la boca abierta en un grito o exclamación, ojos muy abiertos y cejas fruncidas., En el panel superior, de frente, ligeramente inclinada hacia adelante, como si estuviera discutiendo acaloradamente.
+  - Sarada Uchiha (Flow ref: Sarada Uchiha): Frustrada y enojada, con la boca abierta en un grito o exclamación, ojos muy abiertos y cejas fruncidas., , de frente, ligeramente inclinada hacia adelante, como si estuviera discutiendo acaloradamente.
     Apariencia: Mujer joven con cabello oscuro corto, gafas redondas, aretes. Viste una chaqueta oscura con cuello y puños claros sobre una camiseta de rayas horizontales. Lleva un emblema en el brazo izquierdo.
-  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio, con una mirada de resignación o firmeza, cejas ligeramente fruncidas y boca en una línea recta., En el panel inferior, a la derecha, de pie y apoyado casualmente contra una pared o marco de puerta, mirando hacia la izquierda.
+  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio, con una mirada de resignación o firmeza, cejas ligeramente fruncidas y boca en una línea recta., , a la derecha, de pie y apoyado casualmente contra una pared o marco de puerta, mirando hacia la izquierda.
     Apariencia: Hombre adulto con cabello oscuro y puntiagudo recogido en una cola de caballo alta, barba de chivo. Viste una túnica o capa clara de cuello alto sobre un atuendo oscuro. Su brazo derecho está doblado, apoyado en algo.
-  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio y determinado, con una mirada fija y penetrante., En el panel inferior, a la izquierda, de pie y mirando hacia Shikamaru. El recuadro con sus ojos está en el extremo izquierdo, superpuesto al panel principal.
+  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio y determinado, con una mirada fija y penetrante., , a la izquierda, de pie y mirando hacia Shikamaru. El recuadro con sus ojos está en el extremo izquierdo, superpuesto al panel principal.
     Apariencia: Hombre joven con cabello oscuro y puntiagudo. Viste una bufanda clara y una chaqueta o túnica clara sobre un atuendo oscuro. En un pequeño recuadro, se muestran solo sus ojos intensos y parte de su cabello.
 
 ESCENARIO:
-  - Descripción: En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 3
+  - Descripción: , Sarada está en medio de una discusión acalorada, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 3
   - Hora: day
 
 CÁMARA:
@@ -131,7 +131,7 @@ ILUMINACIÓN:
 MOOD: La atmósfera general es de tensión y seriedad. el panel superior irradia frustración y exasperación, mientras que el panel inferior transmite una sensación de resolución inquebrantable y juicio severo, con un tono sombrío y definitivo respecto a un conflicto pasado y sus consecuencias.
 
 ACCIÓN:
-  - En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Boruto) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 4
+  -  Sarada está en medio de una discusión acalorada, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 4
   - Duración: 10.0 segundos
   - Diálogo: [Character] "{'speaker': 'Shikamaru Nara', 'text': 'Te digo lo mismo, Sarada.'}"
 
@@ -158,15 +158,15 @@ ESCENA 4 (00:30 - 00:40)
 ──────────────────────────────────────────────────
 
 PERSONAJES:
-  - Sarada Uchiha (Flow ref: Sarada Uchiha): Frustrada y enojada, con la boca abierta en un grito o exclamación, ojos muy abiertos y cejas fruncidas., En el panel superior, de frente, ligeramente inclinada hacia adelante, como si estuviera discutiendo acaloradamente.
+  - Sarada Uchiha (Flow ref: Sarada Uchiha): Frustrada y enojada, con la boca abierta en un grito o exclamación, ojos muy abiertos y cejas fruncidas., , de frente, ligeramente inclinada hacia adelante, como si estuviera discutiendo acaloradamente.
     Apariencia: Mujer joven con cabello oscuro corto, gafas redondas, aretes. Viste una chaqueta oscura con cuello y puños claros sobre una camiseta de rayas horizontales. Lleva un emblema en el brazo izquierdo.
-  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio, con una mirada de resignación o firmeza, cejas ligeramente fruncidas y boca en una línea recta., En el panel inferior, a la derecha, de pie y apoyado casualmente contra una pared o marco de puerta, mirando hacia la izquierda.
+  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio, con una mirada de resignación o firmeza, cejas ligeramente fruncidas y boca en una línea recta., , a la derecha, de pie y apoyado casualmente contra una pared o marco de puerta, mirando hacia la izquierda.
     Apariencia: Hombre adulto con cabello oscuro y puntiagudo recogido en una cola de caballo alta, barba de chivo. Viste una túnica o capa clara de cuello alto sobre un atuendo oscuro. Su brazo derecho está doblado, apoyado en algo.
-  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio y determinado, con una mirada fija y penetrante., En el panel inferior, a la izquierda, de pie y mirando hacia Shikamaru. El recuadro con sus ojos está en el extremo izquierdo, superpuesto al panel principal.
+  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio y determinado, con una mirada fija y penetrante., , a la izquierda, de pie y mirando hacia Shikamaru. El recuadro con sus ojos está en el extremo izquierdo, superpuesto al panel principal.
     Apariencia: Hombre joven con cabello oscuro y puntiagudo. Viste una bufanda clara y una chaqueta o túnica clara sobre un atuendo oscuro. En un pequeño recuadro, se muestran solo sus ojos intensos y parte de su cabello.
 
 ESCENARIO:
-  - Descripción: En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Boruto) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 4
+  - Descripción: , Sarada está en medio de una discusión acalorada, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 4
   - Hora: day
 
 CÁMARA:
@@ -181,7 +181,7 @@ ILUMINACIÓN:
 MOOD: La atmósfera general es de tensión y seriedad. el panel superior irradia frustración y exasperación, mientras que el panel inferior transmite una sensación de resolución inquebrantable y juicio severo, con un tono sombrío y definitivo respecto a un conflicto pasado y sus consecuencias.
 
 ACCIÓN:
-  - En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Boruto) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 3
+  - , Sarada está en medio de una discusión acalorada, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 3
   - Duración: 10.0 segundos
   - Diálogo: [Character] "{'speaker': '(Shikamaru Nara, pensamiento/recuerdo)', 'text': 'Tuvo la desfachatez de matar al Hokage...'}"
 
@@ -209,15 +209,15 @@ ESCENA 5 (00:40 - 00:50)
 ──────────────────────────────────────────────────
 
 PERSONAJES:
-  - Sarada Uchiha (Flow ref: Sarada Uchiha): Frustrada y enojada, con la boca abierta en un grito o exclamación, ojos muy abiertos y cejas fruncidas., En el panel superior, de frente, ligeramente inclinada hacia adelante, como si estuviera discutiendo acaloradamente.
+  - Sarada Uchiha (Flow ref: Sarada Uchiha): Frustrada y enojada, con la boca abierta en un grito o exclamación, ojos muy abiertos y cejas fruncidas., , de frente, ligeramente inclinada hacia adelante, como si estuviera discutiendo acaloradamente.
     Apariencia: Mujer joven con cabello oscuro corto, gafas redondas, aretes. Viste una chaqueta oscura con cuello y puños claros sobre una camiseta de rayas horizontales. Lleva un emblema en el brazo izquierdo.
-  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio, con una mirada de resignación o firmeza, cejas ligeramente fruncidas y boca en una línea recta., En el panel inferior, a la derecha, de pie y apoyado casualmente contra una pared o marco de puerta, mirando hacia la izquierda.
+  - Shikamaru Nara (Flow ref: Shikamaru Nara): Serio, con una mirada de resignación o firmeza, cejas ligeramente fruncidas y boca en una línea recta., , a la derecha, de pie y apoyado casualmente contra una pared o marco de puerta, mirando hacia la izquierda.
     Apariencia: Hombre adulto con cabello oscuro y puntiagudo recogido en una cola de caballo alta, barba de chivo. Viste una túnica o capa clara de cuello alto sobre un atuendo oscuro. Su brazo derecho está doblado, apoyado en algo.
-  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio y determinado, con una mirada fija y penetrante., En el panel inferior, a la izquierda, de pie y mirando hacia Shikamaru. El recuadro con sus ojos está en el extremo izquierdo, superpuesto al panel principal.
+  - Konohamaru Sarutobi (Flow ref: Konohamaru Sarutobi): Serio y determinado, con una mirada fija y penetrante., , a la izquierda, de pie y mirando hacia Shikamaru. El recuadro con sus ojos está en el extremo izquierdo, superpuesto al panel principal.
     Apariencia: Hombre joven con cabello oscuro y puntiagudo. Viste una bufanda clara y una chaqueta o túnica clara sobre un atuendo oscuro. En un pequeño recuadro, se muestran solo sus ojos intensos y parte de su cabello.
 
 ESCENARIO:
-  - Descripción: En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 5
+  - Descripción: , Sarada está en medio de una discusión acalorada, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 5
   - Hora: day
 
 CÁMARA:
@@ -232,7 +232,7 @@ ILUMINACIÓN:
 MOOD: La atmósfera general es de tensión y seriedad. el panel superior irradia frustración y exasperación, mientras que el panel inferior transmite una sensación de resolución inquebrantable y juicio severo, con un tono sombrío y definitivo respecto a un conflicto pasado y sus consecuencias.
 
 ACCIÓN:
-  - En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Boruto) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 5
+  - , Sarada está en medio de una discusión acalorada, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 5
   - Duración: 10.0 segundos
   - Diálogo: [Character] "{'speaker': 'Shikamaru Nara', 'text': '...e intentó acabar con su hijo Kawaki. Es un traidor.'}"
 
@@ -267,7 +267,7 @@ ESCENA 1 — Contexto Global (00:00 - 00:10)
 PERSONAJES:
 
 ESCENARIO:
-  - Descripción: En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 1
+  - Descripción: , Sarada está en medio de una discusión acalorada, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 1
   - Hora: day
   - Mood: neutral
 
@@ -327,7 +327,7 @@ ESCENA 2 — Contexto Global (00:10 - 00:20)
 PERSONAJES:
 
 ESCENARIO:
-  - Descripción: En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 2
+  - Descripción: , Sarada está en medio de una discusión acalorada, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 2
   - Hora: day
   - Mood: neutral
 
@@ -387,7 +387,7 @@ ESCENA 3 — Contexto Global (00:20 - 00:30)
 PERSONAJES:
 
 ESCENARIO:
-  - Descripción: En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 3
+  - Descripción: , Sarada está en medio de una discusión acalorada, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 3
   - Hora: day
   - Mood: neutral
 
@@ -447,7 +447,7 @@ ESCENA 4 — Contexto Global (00:30 - 00:40)
 PERSONAJES:
 
 ESCENARIO:
-  - Descripción: En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 4
+  - Descripción: , Sarada está en medio de una discusión acalorada, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 4
   - Hora: day
   - Mood: neutral
 
@@ -507,7 +507,7 @@ ESCENA 5 — Contexto Global (00:40 - 00:50)
 PERSONAJES:
 
 ESCENARIO:
-  - Descripción: En el panel superior, Sarada está en medio de una discusión acalorada, expresando su frustración. En el panel inferior, Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 5
+  - Descripción: , Sarada está en medio de una discusión acalorada, expresando su frustración. , Shikamaru y otro personaje (Konohamaru Sarutobi) están conversando seriamente. Shikamaru parece estar explicando o reiterando una postura firme, mientras que el otro personaje (Konohamaru Sarutobi) parece estar expresando un juicio severo sobre un tercero, posiblemente en un monólogo interno o un recuerdo, como sugieren los recuadros de diálogo asociados a su imagen. - Part 5
   - Hora: day
   - Mood: neutral
 
