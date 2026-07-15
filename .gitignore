@@ -10,3 +10,4 @@ test.db
 .env.*.local
 
 *.bak
+vm004458/
